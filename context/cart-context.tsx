@@ -1,14 +1,9 @@
 import { FC, useState, createContext, useContext } from 'react';
 import { useProduct } from "./product-context";
 
-// type CartItem = {
-  // productId: number,
-  // quantity: number
-// }
 type CartState = {
-  // cartItems: Array<CartItem>,
   cartItems: {
-    [cartId: number]: number, // ásar a string el cartId
+    [cartId: number]: number,
   },
   total: number
 }
