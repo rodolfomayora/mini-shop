@@ -107,8 +107,23 @@ export const useCart = () => {
         allCartItemsId: copyAllCartItemsId
       })
     })
-
   }
 
-  return { cartState, setCartState, addToCart, discountFromCart, removeFromCart };
+  const emptyCart = (): void => {
+    
+    setCartState((state: CartState): CartState => ({
+      ...state,
+      cartItemsById: {},
+      allCartItemsId: []
+    }))
+  }
+
+  return {
+    cartState,
+    setCartState,
+    addToCart,
+    discountFromCart,
+    removeFromCart,
+    emptyCart  
+  };
 }
