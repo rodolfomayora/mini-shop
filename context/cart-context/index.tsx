@@ -6,7 +6,7 @@ type CartState = {
     [cartId: number]: number,
   },
   allCartItemsId: Array<number>
-  totalPrice: number
+  // totalPrice: number
 }
 type setState = (param?: any) => void;
 type CartContext = { cartState: CartState, setCartState: setState } | undefined;
@@ -17,7 +17,7 @@ export const CartProvider: FC = ({ children }) => {
   const initialState: CartState = {
     cartItemsById: {},
     allCartItemsId: [],
-    totalPrice: 0
+    // totalPrice: 0
   }
 
   const [cartState, setCartState] = useState<CartState>(initialState);
@@ -40,7 +40,6 @@ export const useCart = () => {
   const { products } = productState;
 
   const addToCart = (productId: number): void => {
-
     setCartState((state: CartState): CartState => {
       const incrementValue: number = 1;
       const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
@@ -70,7 +69,6 @@ export const useCart = () => {
   }
 
   const discountFromCart = (productId: number): void => {
-
     setCartState((state: CartState): CartState => {
       const decrementValue: number = 1;
       const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
@@ -90,7 +88,6 @@ export const useCart = () => {
   }
 
   const removeFromCart = (productId: number): void => {
-
     setCartState((state: CartState): CartState => {
       const { cartItemsById, allCartItemsId } = state;
       const copyCartItemsById = { ...cartItemsById };
@@ -110,7 +107,6 @@ export const useCart = () => {
   }
 
   const emptyCart = (): void => {
-    
     setCartState((state: CartState): CartState => ({
       ...state,
       cartItemsById: {},

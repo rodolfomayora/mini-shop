@@ -33,21 +33,17 @@ export const ProductProvider: FC = ({ children }) => {
 }
 
 export const useProduct = () => {
-  
   const context = useContext(ProductStateContext);
   if (!context) throw new Error('useProduct must be used within ProductProvider');
   const { productState, setProductState } = context;
   
   const addProducts = (productList: Array<any>): void => {
-
     const normalizeList = (acc: object, crr: any): object => ({
       ...acc,
       [crr.id]: { ...crr }
     }); 
-
-    const getId = (product: any) => product.id;
-
     const normalizedProducList = productList.reduce(normalizeList, {});
+    const getId = (product: any) => product.id;
     const allProducId = productList.map(getId);
     
     setProductState((state: ProductState): ProductState => ({
@@ -60,5 +56,31 @@ export const useProduct = () => {
     }));
   }
 
-  return { productState, setProductState, addProducts };
+  const discountProductsFromStok = (cartItemsById: object): void => {
+    setProductState((state: ProductState): ProductState => {
+      const copyProductsById: object = { ...state.products.byId };
+      const copyCartItems: object = { ...cartItemsById };
+      const cartItemsKeys: Array<string> = Object.keys(copyCartItems);
+
+      cartItemsKeys.forEach((itemId: string) => {
+        const productQuantityInCart: number = copyCartItems[itemId];
+        copyProductsById[itemId].quantity -= productQuantityInCart;
+      })
+
+      return ({
+        ...state,
+        products: {
+          ...state.products,
+          byId: copyProductsById
+        }
+      })
+    })
+  }
+
+  return {
+    productState,
+    setProductState,
+    addProducts,
+    discountProductsFromStok
+  };
 }
