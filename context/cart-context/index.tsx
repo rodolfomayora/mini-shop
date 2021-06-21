@@ -2,9 +2,10 @@ import { FC, useState, createContext, useContext } from 'react';
 import { useProduct } from "../product-context";
 
 type CartState = {
-  cartItems: {
+  cartItemsById: {
     [cartId: number]: number,
   },
+  allCartItemsId: Array<number>
   totalPrice: number
 }
 type setState = (param?: any) => void;
@@ -14,7 +15,8 @@ const CartStateContext = createContext<CartContext>(undefined);
 
 export const CartProvider: FC = ({ children }) => {
   const initialState: CartState = {
-    cartItems: {},
+    cartItemsById: {},
+    allCartItemsId: [],
     totalPrice: 0
   }
 
@@ -41,16 +43,26 @@ export const useCart = () => {
 
     setCartState((state: CartState): CartState => {
       const incrementValue: number = 1;
-      const currentQuantity: number = state.cartItems?.[productId] ?? 0;
+      const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
       const maxProductStockLimit: number = products.byId[productId].quantity;
       const isQuantityOnLimit: boolean = currentQuantity >= maxProductStockLimit;
 
+      const currentIds: Array<number> = state.allCartItemsId;
+      const doesIdAlreadyExist: boolean = currentIds.includes(productId);
+
+      const updateAllCartItemsId = (condition: boolean, ids: Array<number>): Array<number> => {
+        return condition
+        ? ids
+        : ids.concat(productId)
+      }
+
       return !isQuantityOnLimit ? ({
         ...state,
-        cartItems: {
-          ...state.cartItems,
+        cartItemsById: {
+          ...state.cartItemsById,
           [productId]: currentQuantity + incrementValue
-        } 
+        },
+        allCartItemsId: updateAllCartItemsId(doesIdAlreadyExist, currentIds)
       }) : (
         state
       )
@@ -61,14 +73,14 @@ export const useCart = () => {
 
     setCartState((state: CartState): CartState => {
       const decrementValue: number = 1;
-      const currentQuantity: number = state.cartItems?.[productId] ?? 0;
+      const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
       const minProductStockLimit: number = 1;
       const isMinimunQuantity: boolean = currentQuantity <= minProductStockLimit;
 
       return !isMinimunQuantity ? ({
         ...state,
-        cartItems: {
-          ...state.cartItems,
+        cartItemsById: {
+          ...state.cartItemsById,
           [productId]: currentQuantity - decrementValue
         }
       }) : (
