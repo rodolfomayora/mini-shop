@@ -89,5 +89,26 @@ export const useCart = () => {
     })
   }
 
-  return { cartState, setCartState, addToCart, discountFromCart };
+  const removeFromCart = (productId: number): void => {
+
+    setCartState((state: CartState): CartState => {
+      const { cartItemsById, allCartItemsId } = state;
+      const copyCartItemsById = { ...cartItemsById };
+      delete copyCartItemsById[productId];
+
+      const indexToRemoveFromId: number = allCartItemsId.indexOf(productId);
+      const copyAllCartItemsId: Array<number> = [...allCartItemsId];
+      const quantityToRemove: number = 1;
+      copyAllCartItemsId.splice(indexToRemoveFromId, quantityToRemove);
+
+      return ({
+        ...state,
+        cartItemsById: copyCartItemsById,
+        allCartItemsId: copyAllCartItemsId
+      })
+    })
+
+  }
+
+  return { cartState, setCartState, addToCart, discountFromCart, removeFromCart };
 }
