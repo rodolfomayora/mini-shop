@@ -22,7 +22,8 @@ export default createGlobalStyle`
   :root {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-size: 18px;
-    color: ${colors.black}
+    color: ${colors.black2};
+    background-color: ${colors.white};
   }
 
   h1,
@@ -33,6 +34,7 @@ export default createGlobalStyle`
   h6 {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-size: 28px;
+    color: ${colors.black2};
   }
 
   img,
@@ -44,5 +46,11 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
     -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    padding: 0;  
   }
 `;
