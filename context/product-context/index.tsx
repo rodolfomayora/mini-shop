@@ -23,7 +23,7 @@ export const ProductProvider: FC = ({ children }) => {
   }
  
   const [productState, setProductState] = useState<ProductState>(initialState);
-  const providerValue = { productState, setProductState };
+  const providerValue: ProductContext = { productState, setProductState };
 
   return (
     <ProductStateContext.Provider value={providerValue}>

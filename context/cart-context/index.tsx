@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useContext } from 'react';
+import { FC, useState, createContext, useContext, useEffect } from 'react';
 import { useProduct } from "../product-context";
 
 type CartState = {
@@ -6,7 +6,7 @@ type CartState = {
     [cartId: number]: number,
   },
   allCartItemsId: Array<number>
-  // totalPrice: number
+  subtotalPrice: number
 }
 type setState = (param?: any) => void;
 type CartContext = { cartState: CartState, setCartState: setState } | undefined;
@@ -17,11 +17,34 @@ export const CartProvider: FC = ({ children }) => {
   const initialState: CartState = {
     cartItemsById: {},
     allCartItemsId: [],
-    // totalPrice: 0
+    subtotalPrice: 0
   }
 
   const [cartState, setCartState] = useState<CartState>(initialState);
-  const providerValue = { cartState, setCartState };
+  const providerValue: CartContext = { cartState, setCartState };
+
+  const productcContext = useProduct();
+  const { productState } = productcContext;
+  useEffect(() => {
+
+    const calcSubtotalPrice = (cartState: CartState): number => {
+      const { allCartItemsId, cartItemsById } = cartState;
+      const { products } = productState;
+  
+      return allCartItemsId.reduce((total, itemId) => {
+        const productPrice: number = products.byId[itemId].price;
+        const productQuantityInCart: number = cartItemsById[itemId];
+        const subtotal: number = productPrice * productQuantityInCart;
+        return total + subtotal;
+      }, 0)
+    }
+
+    setCartState((state: CartState): CartState => ({
+      ...state,
+      subtotalPrice: calcSubtotalPrice(state)
+    }))
+  },
+  [cartState.cartItemsById])
 
   return (
     <CartStateContext.Provider value={providerValue}>
