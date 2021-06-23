@@ -1,14 +1,33 @@
 import React, { FC } from 'react';
+import Link from 'next/Link';
+import Container from '../Container';
 import CartButton from '../CartButton';
+import { StyledHeader, HeaderWrapper, Title } from './styles';
 
 const Header: FC = () => {
   return (
-    <header style={{backgroundColor: 'hsl(0, 0%, 60%)'}}>
-      
-      <h1>HEADER</h1>
+    <StyledHeader>
+      <Container>
+        <HeaderWrapper>
+          <Title className="tittle">HEADER</Title>
 
-      <CartButton />
-    </header>
+          <button>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </button>
+
+          <button>
+            <Link href="/Cart">
+              <a>Go to Cart</a>
+            </Link>
+          </button>
+
+          <CartButton />
+
+        </HeaderWrapper>
+      </Container>
+    </StyledHeader>
   )
 }
 
