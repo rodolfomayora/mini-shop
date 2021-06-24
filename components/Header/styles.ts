@@ -6,7 +6,6 @@ export const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
   background-color: ${colors.marineBlue};
-  box-shadow: ${colors.shadow2};
 `;
 
 export const HeaderWrapper = styled.div`
@@ -16,6 +15,10 @@ export const HeaderWrapper = styled.div`
   height: 60px;
 
   @media screen and (min-width: ${breakpoints.medium}) {
+    height: 70px;
+  }
+
+  @media screen and (min-width: ${breakpoints.extraLarge}) {
     height: 80px;
   }
 `;
