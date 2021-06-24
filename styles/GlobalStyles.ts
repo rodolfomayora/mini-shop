@@ -37,16 +37,10 @@ export default createGlobalStyle`
     color: ${colors.black2};
   }
 
-  img,
-  figure {
-    max-width: 100%;
-    height: auto;
-  }
-
-  a {
-    text-decoration: none;
-    -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
-  }
+  a { text-decoration: none; }
+  
+  a,
+  button { -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0); }
 
   ul,
   ol {

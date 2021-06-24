@@ -46,6 +46,17 @@ export default css`
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
+    font-weight: 600;
+    src:
+      url('/fonts/Montserrat/montserrat-v15-latin-600.woff') format('woff'),
+      url('/fonts/Montserrat/montserrat-v15-latin-600.ttf') format('truetype');
+    font-display: swap;
+  }
+
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
     font-weight: 800;
     src:
       url('/fonts/Montserrat/montserrat-v15-latin-800.woff') format('woff'),
