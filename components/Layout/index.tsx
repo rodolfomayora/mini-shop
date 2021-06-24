@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import Head from 'next/head';
 import Container from '../Container';
 import Header from '../Header';
+import { MainContent } from './styles';
 
 type LayoutProps = {
   pageTitle: string
@@ -14,11 +15,11 @@ const Layout: FC<LayoutProps> = ({ children, pageTitle }) => (
       <meta charSet='UTF-8' />
     </Head>
     <Header />
-    <main>
+    <MainContent>
       <Container>
         {children}
       </Container>  
-    </main>
+    </MainContent>
   </>
 )
 

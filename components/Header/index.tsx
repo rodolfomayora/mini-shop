@@ -2,33 +2,37 @@ import React, { FC } from 'react';
 import Link from 'next/Link';
 import Container from '../Container';
 import CartButton from '../CartButton';
-import { StyledHeader, HeaderWrapper, Title } from './styles';
+import {
+  HeaderWrapper,
+  LinkText,
+  NavigationButton,
+  StyledHeader,
+  Title,
+} from './styles';
 
-const Header: FC = () => {
-  return (
-    <StyledHeader>
-      <Container>
-        <HeaderWrapper>
-          <Title className="tittle">HEADER</Title>
+const Header: FC = () => (
+  <StyledHeader>
+    <Container>
+      <HeaderWrapper>
+        <Link href="/">
+          <a><Title className="tittle">SHOP</Title></a>
+        </Link>
+        
+        <NavigationButton>
+          <Link href="/">
+            <LinkText>Home</LinkText>
+          </Link>
 
-          <button>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </button>
-
-          <button>
-            <Link href="/Cart">
-              <a>Go to Cart</a>
-            </Link>
-          </button>
+          <Link href="/ShoppingRecord">
+            <LinkText>Record</LinkText>
+          </Link>
 
           <CartButton />
-
-        </HeaderWrapper>
-      </Container>
-    </StyledHeader>
-  )
-}
+          
+        </NavigationButton>
+      </HeaderWrapper>
+    </Container>
+  </StyledHeader>
+)
 
 export default Header;

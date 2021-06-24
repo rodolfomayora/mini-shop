@@ -18,4 +18,8 @@ export const StyledContainer = styled.div`
     /* 100px represent padding left and right of previous media query */
     max-width: 891px;
   }
+
+  @media screen and (min-width: ${breakpoints.extraLarge}) {
+    max-width: 1240px;
+  }
 `;
