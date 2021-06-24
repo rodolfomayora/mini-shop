@@ -1,13 +1,12 @@
 import React, { FC, useEffect } from 'react';
-import Link from 'next/link';
-import { Layout } from '../../components';
-import { useProduct, useCart } from '../../context';
+import { Layout, ProductPreview } from '../../components';
+import { useProduct } from '../../context';
 import sampleProducts from '../../data/products.json';
+import { ProductGrid, MainTitle } from './styles';
 
 const Home: FC = () => {
-
   const productContext = useProduct();
-  const { productState, addProducts } = productContext
+  const { productState, addProducts } = productContext;
   const { didContextMount, products } = productState;
   const { allIds, byId } = products;
   const areThereProducts: boolean = !!allIds.length;
@@ -17,37 +16,24 @@ const Home: FC = () => {
   },
   [didContextMount]);
 
-  const cartContext = useCart();
-  const { cartState, addToCart } = cartContext;
-  useEffect(() => {
-    console.log(cartState);
-  },
-  [cartState])
-
   return (
     <Layout pageTitle={'Home'}>
-      <h1>Home</h1>
+      <MainTitle>Products</MainTitle>
 
-      <Link href="/Cart">
-        <a>Cart Page</a>
-      </Link>
-
-      <ul>
-      {areThereProducts && allIds.map((productId: any) => {
+      <ProductGrid>
+      {areThereProducts && allIds.map((productId: number) => {
+        
         const product = byId[productId];
-        return (
-          <li key={productId.toString()}>
-            <div>{`Name : ${product.title}`}</div>
-            <div>{`Price: $${product.price}`}</div>
-            <button
-              onClick={() => addToCart(productId)}
-            >
-              add to cart
-            </button>
-          </li>
-        )
+
+        return (<ProductPreview
+          key={productId.toString()}
+          productId={productId}
+          productName={product.title}
+          productPrice={product.price}
+          productImage={product.image}
+        />)
       })}
-      </ul>
+      </ProductGrid>
     </Layout>
   )
 }
