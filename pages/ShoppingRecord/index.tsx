@@ -23,10 +23,10 @@ const ShoppingRecord: FC = () => {
         return (
           <li key={id}>
             <p>{`Record ID: #${id.padStart(5, '0')}`}</p>
+            <p>{`Price did pay: $${record.totalPrice.toFixed(2)}`}</p>
             <p>{`Email: ${record.email}`}</p>
             <p>{`Buyer: ${record.name} ${record.lastname}`}</p>
             <p>{`Address: ${record.address}`}</p>
-
             <hr />
           </li>
         )
