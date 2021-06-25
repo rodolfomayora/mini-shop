@@ -18,7 +18,7 @@ export const ImageLayer = styled.div`
   left: -1px;
   right: -1px;
   bottom: -1px;
-  padding: 20px;
+  padding: 8%;
 `;
 
 export const Image = styled.img`

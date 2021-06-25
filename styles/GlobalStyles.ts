@@ -11,6 +11,7 @@ export default createGlobalStyle`
   html * {
     box-sizing: border-box;
     margin: 0;
+    -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
   }
 
   html,
@@ -39,9 +40,6 @@ export default createGlobalStyle`
 
   a { text-decoration: none; }
   
-  a,
-  button { -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0); }
-
   ul,
   ol {
     list-style: none;

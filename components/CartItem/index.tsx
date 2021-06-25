@@ -35,7 +35,7 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
 
   const router = useRouter();
   const redirect = router.push;
-  const onClickRedirect = () => () => redirect(`/ProductDetail/${cartItemId}`);
+  const onClickRedirect = () => redirect(`/ProductDetail/${cartItemId}`);
 
   return (
     <StyledCartItem>
