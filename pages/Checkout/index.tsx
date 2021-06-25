@@ -45,7 +45,6 @@ const Checkout: FC = () => {
           name: '',
           lastname: '',
           address: '',
-          reseption: ''
         }}
 
         onSubmit={buyProducts}
