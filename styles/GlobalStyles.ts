@@ -15,7 +15,7 @@ export default createGlobalStyle`
 
   html,
   body {
-    min-width: 320px;
+    min-width: 360px;
     min-height: 100vh;
   }
 

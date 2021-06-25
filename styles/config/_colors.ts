@@ -3,6 +3,7 @@ export default {
   skyBlue   : '#5d83ea',
   white     : '#f5f6fa',
   white2    : '#ffffff',
+  gray      : '#818181',
   black1    : '#2f3640',
   black2    : '#353b48',
   black3    : '#111111',

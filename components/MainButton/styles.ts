@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 import { colors } from '../../styles/config';
 
 type StyledMainButtonProps = {
+  disabled?: boolean,
   outline?: boolean
 }
 
 export const StyledMainButton = styled.button<StyledMainButtonProps>`
-  line-height: 32px;
+  line-height: 36px;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0 15px;
   border: solid 2px ${colors.black3};
   border-radius: 4px;
   font-size: 16px;
@@ -45,4 +45,11 @@ export const StyledMainButton = styled.button<StyledMainButtonProps>`
       color: ${colors.white};
     }
   `}
+
+  &:disabled {
+    background-color: ${colors.gray};
+    border-color: ${colors.gray};
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;
