@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/config';
 
-export const StyledCartSummaryItem = styled.div`
+export const StyledCartSummaryItem = styled.article`
   display: flex;
   height: 70px;
   background-color: ${colors.white2};

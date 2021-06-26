@@ -13,7 +13,8 @@ import {
 
 const Product: FC = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { query, push: redirect } = router;
+  const { id } = query;
 
   const productContext = useProduct();
   const { products } = productContext.productState;
@@ -22,6 +23,7 @@ const Product: FC = () => {
   const cartContext = useCart();
   const { addToCart } = cartContext;
   const onClickAddToCart = () => addToCart(Number(id));
+  const onClickGoToCart = () => redirect('/Cart');
 
   return (
     <Layout pageTitle="Product Detail">
@@ -38,6 +40,7 @@ const Product: FC = () => {
           <p>{`Available: ${product.quantity}`}</p>
           <p>{`Price: $${product.price}`}</p>
           <MainButton onClickAction={onClickAddToCart}>Add to cart</MainButton>
+          <MainButton outline onClickAction={onClickGoToCart}>Go to cart</MainButton>
         </InfoContainer>
       </DetailLayout>
     </Layout>

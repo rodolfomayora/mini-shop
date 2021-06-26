@@ -5,10 +5,11 @@ import sampleProducts from '../../data/products.json';
 import { ProductGrid, MainTitle } from './styles';
 
 const Home: FC = () => {
+  
   const productContext = useProduct();
   const { productState, addProducts } = productContext;
   const { didContextMount, products } = productState;
-  const { allIds, byId } = products;
+  const { allIds } = products;
   const areThereProducts: boolean = !!allIds.length;
   useEffect(() => {
     // Initialize List one time
@@ -21,18 +22,11 @@ const Home: FC = () => {
       <MainTitle>Products</MainTitle>
 
       <ProductGrid>
-      {areThereProducts && allIds.map((productId: number) => {
-        
-        const product = byId[productId];
-
-        return (<ProductPreview
-          key={productId.toString()}
-          productId={productId}
-          productName={product.title}
-          productPrice={product.price}
-          productImage={product.image}
-        />)
-      })}
+      {areThereProducts && allIds.map((productId: number) => (
+        <li key={productId.toString()}>
+          <ProductPreview productId={productId}/>
+        </li>
+      ))}
       </ProductGrid>
     </Layout>
   )

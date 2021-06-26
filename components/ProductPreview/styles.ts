@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/config';
 
-export const StyledProductPreview = styled.li`
+export const StyledProductPreview = styled.article`
   box-shadow: ${colors.shadow};
   border-radius: 4px;
   overflow: hidden;

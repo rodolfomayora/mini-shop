@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
-import { useCart } from '../../context';
+import { useProduct, useCart } from '../../context';
 import { ImageWrapper, MainButton } from '../../components';
 import {
   InfoWrapper,
@@ -11,13 +11,14 @@ import {
 
 type ProductPreviewProps = {
   productId: number,
-  productName: string,
-  productPrice: number,
-  productImage: string
 }
 
-const ProductPreview: FC<ProductPreviewProps> = (props) => {
-  const { productId, productName, productPrice, productImage } = props;
+const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
+
+  const productContext = useProduct();
+  const { productState } = productContext;
+  const { products } = productState;
+  const product = products.byId[productId];
 
   const cartContext = useCart();
   const { addToCart } = cartContext;
@@ -34,11 +35,11 @@ const ProductPreview: FC<ProductPreviewProps> = (props) => {
 
   return (
     <StyledProductPreview onClick={onClickRedirect}>
-      <ImageWrapper productImage={productImage}/>
+      <ImageWrapper productImage={product.image}/>
 
       <InfoWrapper>
-        <ProductTitle>{productName}</ProductTitle>
-        <ProductPrice>{`$${productPrice.toFixed(2)}`}</ProductPrice>
+        <ProductTitle>{product.title}</ProductTitle>
+        <ProductPrice>{`$${product.price.toFixed(2)}`}</ProductPrice>
         <MainButton outline>View Detail</MainButton>
         <MainButton onClickAction={onAddToCart(productId)}>
           Add to cart

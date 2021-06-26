@@ -46,7 +46,7 @@ const Checkout: FC = () => {
         <SummarySection>
           <SubTitle>Cart Summary</SubTitle>
           <CartSummaryList>
-          {allCartItemsId?.map((cartItemId) => (
+          {allCartItemsId.map((cartItemId) => (
             <li key={cartItemId.toString()}>
               <CartSummaryItem cartItemId={cartItemId}/>
             </li>

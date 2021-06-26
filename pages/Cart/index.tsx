@@ -20,8 +20,8 @@ const Cart: FC = () => {
   const cartContext = useCart();
   const { cartState } = cartContext;
   const { allCartItemsId, subtotalPrice } = cartState;
-  const doestheCartHaveProducts: boolean = !!allCartItemsId.length;
-  const isButtonEnable: boolean = !doestheCartHaveProducts;
+  const doesTheCartHaveProducts: boolean = !!allCartItemsId.length;
+  const isButtonEnable: boolean = !doesTheCartHaveProducts;
 
   const router = useRouter();
   const redirect = router.push;
@@ -33,7 +33,7 @@ const Cart: FC = () => {
 
       <CartContent>
         <CartList>
-        {doestheCartHaveProducts ? allCartItemsId.map((cartItemId: number) => (
+        {doesTheCartHaveProducts ? allCartItemsId.map((cartItemId: number) => (
           <li key={cartItemId}>
             <CartItem cartItemId={cartItemId} />
           </li>
