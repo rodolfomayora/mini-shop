@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
-import { Formik } from 'formik';
-import { CartSummaryItem, Layout } from '../../components';
+import { CartSummaryItem, Layout, PaymentForm } from '../../components';
 import { useProduct, useCart, useRecord } from '../../context';
 import {
   CartSummaryList,
-  ChecoutContent,
+  CheckoutContent,
   FormSection,
   MainTitle,
   SubTitle,
@@ -43,7 +42,7 @@ const Checkout: FC = () => {
     <Layout pageTitle="Checkout">
       <MainTitle>Check Out</MainTitle>
 
-      <ChecoutContent>
+      <CheckoutContent>
         <SummarySection>
           <SubTitle>Cart Summary</SubTitle>
           <CartSummaryList>
@@ -54,81 +53,14 @@ const Checkout: FC = () => {
           ))}
           </CartSummaryList>
 
-          <TotalPriceLabel>{`Total: $${subtotalPrice}`}</TotalPriceLabel>
+          <TotalPriceLabel>{`Total: $${subtotalPrice.toFixed(2)}`}</TotalPriceLabel>
         </SummarySection>
-
-        <hr />
 
         <FormSection>
           <SubTitle>Payment Form</SubTitle>
-
-          <Formik
-            initialValues={{
-              email: '',
-              name: '',
-              lastname: '',
-              address: '',
-            }}
-
-            onSubmit={buyProducts}
-          >
-          {({
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <p>
-                <label htmlFor="email">Email:</label>
-                <input id="email"
-                  name="email"
-                  type="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </p>
-
-              <p>
-                <label htmlFor="name">Name:</label>
-                <input id="name"
-                  name="name"
-                  type="text"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </p>
-
-              <p>
-                <label htmlFor="lastname">Lastname:</label>
-                <input id="lastname"
-                  name="lastname"
-                  type="text"
-                  value={values.lastname}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </p>
-
-              <p>
-                <label htmlFor="address">Address:</label>
-                <input id="address"
-                  name="address"
-                  type="text"
-                  value={values.address}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </p>
-
-              <button type="submit">BUY</button>
-            </form>
-          )}
-          </Formik>
+          <PaymentForm onClickSubmitAction={buyProducts}/>
         </FormSection>
-      </ChecoutContent>
+      </CheckoutContent>
     </Layout>
   )
 }

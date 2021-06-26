@@ -11,7 +11,7 @@ export const SubTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const ChecoutContent = styled.div`
+export const CheckoutContent = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -22,7 +22,13 @@ export const ChecoutContent = styled.div`
 
 export const SummarySection = styled.section`
   @media screen and (min-width: ${breakpoints.large}) {
-    width: 400px;
+    width: 360px;
+    margin-left: 40px;
+  }
+
+  @media screen and (min-width: ${breakpoints.extraLarge}) {
+    width: 450px;
+    margin-left: 60px;
   }
 `;
 
