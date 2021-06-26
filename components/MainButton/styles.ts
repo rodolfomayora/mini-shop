@@ -3,7 +3,8 @@ import { colors } from '../../styles/config';
 
 type StyledMainButtonProps = {
   disabled?: boolean,
-  outline?: boolean
+  outline?: boolean,
+  type?: any,
 }
 
 export const StyledMainButton = styled.button<StyledMainButtonProps>`

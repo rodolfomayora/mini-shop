@@ -6,4 +6,5 @@ export { default as Header } from './Header';
 export { default as ImageWrapper } from './ImageWrapper';
 export { default as Layout } from './Layout';
 export { default as MainButton } from './MainButton';
+export { default as PaymentForm } from './PaymentForm';
 export { default as ProductPreview } from './ProductPreview';
