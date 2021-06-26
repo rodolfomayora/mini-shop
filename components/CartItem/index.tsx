@@ -9,20 +9,20 @@ import {
   CounterBlock,
   InfoContainer,
   ImageContainer,
-  ProducTitle,
+  ProducName,
   StyledCartItem,
 } from './styles';
 
 type CartItemProps = {
-  cartItemId: number
+  cartItemId: string
 }
 
 const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
 
   const productContext = useProduct();
   const { productState } = productContext;
-  const { products } = productState;
-  const currentProduct = products.byId[cartItemId];
+  const { productsById } = productState;
+  const currentProduct = productsById[cartItemId];
 
   const cartContext = useCart();
   const { cartState, removeFromCart, addToCart, discountFromCart } = cartContext;
@@ -44,7 +44,7 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
       </ImageContainer>
 
       <InfoContainer>
-        <ProducTitle>{currentProduct.title}</ProducTitle>
+        <ProducName>{currentProduct.name}</ProducName>
 
         <p>{`Price: $${currentProduct.price.toFixed(2)}`}</p>
 

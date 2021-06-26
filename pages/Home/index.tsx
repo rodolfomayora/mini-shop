@@ -1,29 +1,27 @@
 import React, { FC, useEffect } from 'react';
 import { Layout, ProductPreview } from '../../components';
 import { useProduct } from '../../context';
-import sampleProducts from '../../data/products.json';
+// import sampleProducts from '../../data/products.json';
 import { ProductGrid, MainTitle } from './styles';
 
 const Home: FC = () => {
   
   const productContext = useProduct();
   const { productState, addProducts } = productContext;
-  const { didContextMount, products } = productState;
-  const { allIds } = products;
-  const areThereProducts: boolean = !!allIds.length;
+  const { didContextMount, allProductsId, productsById } = productState;
+  const areThereProducts: boolean = !!allProductsId.length;
   useEffect(() => {
     // Initialize List one time
-    if (!didContextMount) addProducts(sampleProducts);
-  },
-  [didContextMount]);
+    if (!didContextMount) addProducts();
+  });
 
   return (
     <Layout pageTitle={'Home'}>
       <MainTitle>Products</MainTitle>
 
       <ProductGrid>
-      {areThereProducts && allIds.map((productId: number) => (
-        <li key={productId.toString()}>
+      {areThereProducts && allProductsId.map((productId: string) => (
+        <li key={productId}>
           <ProductPreview productId={productId}/>
         </li>
       ))}

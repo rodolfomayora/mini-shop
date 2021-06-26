@@ -1,11 +1,13 @@
 import { FC, useState, createContext, useContext, useEffect } from 'react';
 import { useProduct } from "../product-context";
 
+type CartImtesById = {
+  [productId: string]: number,
+}
+type AllCartItemsId = Array<string>;
 type CartState = {
-  cartItemsById: {
-    [cartId: number]: number,
-  },
-  allCartItemsId: Array<number>
+  cartItemsById: CartImtesById,
+  allCartItemsId: AllCartItemsId,
   subtotalPrice: number
 }
 type setState = (param?: any) => void;
@@ -14,6 +16,7 @@ type CartContext = { cartState: CartState, setCartState: setState } | undefined;
 const CartStateContext = createContext<CartContext>(undefined);
 
 export const CartProvider: FC = ({ children }) => {
+  
   const initialState: CartState = {
     cartItemsById: {},
     allCartItemsId: [],
@@ -29,10 +32,10 @@ export const CartProvider: FC = ({ children }) => {
 
     const calcSubtotalPrice = (cartState: CartState): number => {
       const { allCartItemsId, cartItemsById } = cartState;
-      const { products } = productState;
+      const { productsById } = productState;
   
       return allCartItemsId.reduce((total, itemId) => {
-        const productPrice: number = products.byId[itemId].price;
+        const productPrice: number = productsById[itemId].price;
         const productQuantityInCart: number = cartItemsById[itemId];
         const subtotal: number = productPrice * productQuantityInCart;
         return total + subtotal;
@@ -60,19 +63,19 @@ export const useCart = () => {
 
   const productContext = useProduct(); 
   const { productState } = productContext;
-  const { products } = productState;
+  const { productsById } = productState;
 
-  const addToCart = (productId: number): void => {
+  const addToCart = (productId: string): void => {
     setCartState((state: CartState): CartState => {
       const incrementValue: number = 1;
       const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
-      const maxProductStockLimit: number = products.byId[productId].quantity;
+      const maxProductStockLimit: number = productsById[productId].quantity;
       const isQuantityOnLimit: boolean = currentQuantity >= maxProductStockLimit;
 
-      const currentIds: Array<number> = state.allCartItemsId;
+      const currentIds: AllCartItemsId = [...state.allCartItemsId];
       const doesIdAlreadyExist: boolean = currentIds.includes(productId);
 
-      const updateAllCartItemsId = (condition: boolean, ids: Array<number>): Array<number> => {
+      const updateAllCartItemsId = (condition: boolean, ids: AllCartItemsId): AllCartItemsId => {
         return condition
         ? ids
         : ids.concat(productId)
@@ -91,7 +94,7 @@ export const useCart = () => {
     })
   }
 
-  const discountFromCart = (productId: number): void => {
+  const discountFromCart = (productId: string): void => {
     setCartState((state: CartState): CartState => {
       const decrementValue: number = 1;
       const currentQuantity: number = state.cartItemsById?.[productId] ?? 0;
@@ -110,14 +113,14 @@ export const useCart = () => {
     })
   }
 
-  const removeFromCart = (productId: number): void => {
+  const removeFromCart = (productId: string): void => {
     setCartState((state: CartState): CartState => {
       const { cartItemsById, allCartItemsId } = state;
       const copyCartItemsById = { ...cartItemsById };
       delete copyCartItemsById[productId];
 
       const indexToRemoveFromId: number = allCartItemsId.indexOf(productId);
-      const copyAllCartItemsId: Array<number> = [...allCartItemsId];
+      const copyAllCartItemsId: AllCartItemsId = [...allCartItemsId];
       const quantityToRemove: number = 1;
       copyAllCartItemsId.splice(indexToRemoveFromId, quantityToRemove);
 

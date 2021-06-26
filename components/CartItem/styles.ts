@@ -29,7 +29,7 @@ export const InfoContainer = styled.div`
   & > * + * { margin-top: 20px; }
 `;
 
-export const ProducTitle = styled.h3`
+export const ProducName = styled.h3`
   height: 46px;
   font-size: 20px;
   font-weight: 600;

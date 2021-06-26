@@ -33,7 +33,7 @@ const Cart: FC = () => {
 
       <CartContent>
         <CartList>
-        {doesTheCartHaveProducts ? allCartItemsId.map((cartItemId: number) => (
+        {doesTheCartHaveProducts ? allCartItemsId.map((cartItemId: string) => (
           <li key={cartItemId}>
             <CartItem cartItemId={cartItemId} />
           </li>

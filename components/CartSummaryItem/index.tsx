@@ -9,15 +9,15 @@ import {
 } from './styles';
 
 type CartSummaryItemProps = {
-  cartItemId: number | string
+  cartItemId: string
 }
 
 const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
 
   const productContext = useProduct();
   const { productState } = productContext;
-  const { products } = productState;
-  const product = products.byId[cartItemId];
+  const { productsById } = productState;
+  const product = productsById[cartItemId];
   
   const cartContext = useCart();
   const { cartState } = cartContext;
@@ -33,7 +33,7 @@ const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
       </ImageContainer>
 
       <InfoContainer>
-        <InfoLabel>{`${itemQuantityInCart} x ${product.title}`}</InfoLabel>
+        <InfoLabel>{`${itemQuantityInCart} x ${product.name}`}</InfoLabel>
         <InfoLabel>{`Subtotal: $${subtotalPrice}`}</InfoLabel>
       </InfoContainer>
     </StyledCartSummaryItem>

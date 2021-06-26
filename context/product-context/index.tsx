@@ -1,11 +1,21 @@
 import { FC, useState, createContext, useContext } from 'react';
+import sampleProducts from '../../data/products.json';
 
+type Product = {
+  id: string,
+  image: string
+  name: string,
+  description: string,
+  price: number,
+  quantity: number,
+}
+type ProductsById = {
+  [productId: string]: Product
+}
 type ProductState = {
   didContextMount: boolean,
-  products: {
-    byId: object,
-    allIds: Array<any>
-  }
+  productsById: ProductsById,
+  allProductsId: Array<string>,
 }
 type SetState = (param?: any) => void;
 type ProductContext = { productState: ProductState, setProductState: SetState } | undefined;
@@ -16,10 +26,8 @@ export const ProductProvider: FC = ({ children }) => {
 
   const initialState: ProductState = {
     didContextMount: false,
-    products: {
-      byId: {},
-      allIds: []
-    }
+    productsById: {},
+    allProductsId: []
   }
  
   const [productState, setProductState] = useState<ProductState>(initialState);
@@ -37,28 +45,36 @@ export const useProduct = () => {
   if (!context) throw new Error('useProduct must be used within ProductProvider');
   const { productState, setProductState } = context;
   
-  const addProducts = (productList: Array<any>): void => {
-    const normalizeList = (acc: object, crr: any): object => ({
-      ...acc,
-      [crr.id]: { ...crr }
-    }); 
-    const normalizedProducList = productList.reduce(normalizeList, {});
-    const getId = (product: any) => product.id;
-    const allProducId = productList.map(getId);
+  const addProducts = (): void => {
+    const getId = (product: any) => product.id.toString();
+    const normalizeList = (acc: ProductsById, crr: any): ProductsById => {
+      const productId: string = getId(crr);
+      return ({
+        ...acc,
+        [productId]: {
+          id: productId,
+          image: crr.image,
+          name: crr.title,
+          description: crr.description,
+          price: crr.price,
+          quantity: crr.quantity
+        }
+      })
+    }; 
+    const normalizedProducList = sampleProducts.reduce(normalizeList, {});
+    const allProducId = sampleProducts.map(getId);
     
     setProductState((state: ProductState): ProductState => ({
       ...state,
       didContextMount: true,
-      products: {
-        byId: normalizedProducList,
-        allIds: allProducId
-      }
+      productsById: normalizedProducList,
+      allProductsId: allProducId
     }));
   }
 
   const discountProductsFromStok = (cartItemsById: object): void => {
     setProductState((state: ProductState): ProductState => {
-      const copyProductsById: object = { ...state.products.byId };
+      const copyProductsById: ProductsById = { ...state.productsById };
       const copyCartItems: object = { ...cartItemsById };
       const cartItemsKeys: Array<string> = Object.keys(copyCartItems);
 
@@ -69,10 +85,7 @@ export const useProduct = () => {
 
       return ({
         ...state,
-        products: {
-          ...state.products,
-          byId: copyProductsById
-        }
+        productsById: copyProductsById
       })
     })
   }

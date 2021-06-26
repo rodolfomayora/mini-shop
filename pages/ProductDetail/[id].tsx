@@ -12,22 +12,25 @@ import {
 } from './styles';
 
 const Product: FC = () => {
+
   const router = useRouter();
   const { query, push: redirect } = router;
   const { id } = query;
+  const productId: string = id.toString();
 
   const productContext = useProduct();
-  const { products } = productContext.productState;
-  const product = products.byId[Number(id)];
+  const { productState } = productContext;
+  const { productsById } = productState;
+  const product = productsById[productId];
 
   const cartContext = useCart();
   const { addToCart } = cartContext;
-  const onClickAddToCart = () => addToCart(Number(id));
+  const onClickAddToCart = () => addToCart(productId);
   const onClickGoToCart = () => redirect('/Cart');
 
   return (
     <Layout pageTitle="Product Detail">
-      <ProductDetailTitle>{product.title}</ProductDetailTitle>
+      <ProductDetailTitle>{product.name}</ProductDetailTitle>
       <DetailLayout>
         <ImageContainer>
           <ImageWrapper productImage={product.image}/>

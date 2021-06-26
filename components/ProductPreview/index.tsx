@@ -10,19 +10,19 @@ import {
 } from './styles';
 
 type ProductPreviewProps = {
-  productId: number,
+  productId: string,
 }
 
 const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
 
   const productContext = useProduct();
   const { productState } = productContext;
-  const { products } = productState;
-  const product = products.byId[productId];
+  const { productsById } = productState;
+  const product = productsById[productId];
 
   const cartContext = useCart();
   const { addToCart } = cartContext;
-  const onAddToCart = (productId: number) => {
+  const onAddToCart = (productId: string) => {
     return (event: React.MouseEvent<HTMLElement>): void => {
       event.stopPropagation();
       addToCart(productId);
@@ -38,7 +38,7 @@ const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
       <ImageWrapper productImage={product.image}/>
 
       <InfoWrapper>
-        <ProductTitle>{product.title}</ProductTitle>
+        <ProductTitle>{product.name}</ProductTitle>
         <ProductPrice>{`$${product.price.toFixed(2)}`}</ProductPrice>
         <MainButton outline>View Detail</MainButton>
         <MainButton onClickAction={onAddToCart(productId)}>
