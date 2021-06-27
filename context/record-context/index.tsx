@@ -1,6 +1,16 @@
 import { FC, createContext, useContext, useState } from 'react';
 
-type RecordState = Array<any>;
+type ShoppingRecord = {
+  email: string,
+  name: string,
+  lastname: string,
+  address: string,
+  paymentMethod: string,
+  products: Array<string>,
+  totalProducts: number,
+  totalPrice: number,
+}
+type RecordState = Array<ShoppingRecord>;
 type SetState = (params?: any) => void;
 type RecordContext = { recordState: RecordState, setRecordState: SetState } | undefined;
 
@@ -25,7 +35,7 @@ export const useRecord = () => {
   if (!recordContext) throw new Error('useRecord must be used within RecordProvider');
   const { recordState, setRecordState } = recordContext;
 
-  const addRecord = (newRecord: object) => {
+  const addRecord = (newRecord: ShoppingRecord) => {
     setRecordState((state: RecordState): RecordState => state.concat(newRecord));
   }
 

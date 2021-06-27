@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useCart } from '../../context';
 import {
@@ -46,7 +46,7 @@ const Cart: FC = () => {
       
         <CartSummary>
           <TotalPriceLabel>
-            {`TOTAL PRICE: $${subtotalPrice.toFixed(2)}`}
+            {`Total Price: $${subtotalPrice.toFixed(2)}`}
           </TotalPriceLabel>
 
           <MainButton

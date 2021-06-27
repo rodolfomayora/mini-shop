@@ -6,14 +6,7 @@ import { StyledCartButton, Badge, CartIcon } from './styles';
 const CartButton: FC = () => {
   const cartContext = useCart();
   const { cartState } = cartContext;
-  const { cartItemsById } = cartState;
-
-  const getCartItemsQuantity = (items: object): number => {
-    const allQuantities: Array<number> = Object.values(items);
-    const sumQuantities = (acc: number, crr: number): number => acc + crr;
-    const total: number = allQuantities.reduce(sumQuantities, 0);
-    return total;
-  }
+  const { totalCartItemsQuantity } = cartState;
 
   const router = useRouter();
   const redirect = router.push;
@@ -26,7 +19,7 @@ const CartButton: FC = () => {
         width="20px"
         height="20px"
       />
-      <Badge>{getCartItemsQuantity(cartItemsById)}</Badge>
+      <Badge>{totalCartItemsQuantity}</Badge>
     </StyledCartButton>
   )
 }

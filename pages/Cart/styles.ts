@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints } from '../../styles/config';
+import { breakpoints, colors } from '../../styles/config';
 
 export const MainTitle = styled.h1`
   margin-bottom: 40px;
@@ -34,7 +34,11 @@ export const CartSummary = styled.div`
 `;
 
 export const TotalPriceLabel = styled.p`
-  font-size: 22px;
+  background-color: ${colors.white2};
+  border-radius: 4px;
+  padding: 10px 20px;
+  box-shadow: ${colors.shadow};
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 40px;
 `;

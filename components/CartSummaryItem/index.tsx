@@ -6,6 +6,7 @@ import {
   ImageContainer,
   InfoContainer,
   InfoLabel,
+  SubtotalPrice,
 } from './styles';
 
 type CartSummaryItemProps = {
@@ -34,7 +35,7 @@ const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
 
       <InfoContainer>
         <InfoLabel>{`${itemQuantityInCart} x ${product.name}`}</InfoLabel>
-        <InfoLabel>{`Subtotal: $${subtotalPrice}`}</InfoLabel>
+        <SubtotalPrice>{`Subtotal: $${subtotalPrice}`}</SubtotalPrice>
       </InfoContainer>
     </StyledCartSummaryItem>
   )

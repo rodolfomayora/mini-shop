@@ -21,10 +21,17 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoLabel = styled.p`
+  font-size: 16px;
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
-  &:last-child { margin-top: 8px; }
 `;
+
+export const SubtotalPrice = styled.p`
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 8px;
+`

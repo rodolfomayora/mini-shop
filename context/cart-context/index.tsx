@@ -8,6 +8,7 @@ type AllCartItemsId = Array<string>;
 type CartState = {
   cartItemsById: CartImtesById,
   allCartItemsId: AllCartItemsId,
+  totalCartItemsQuantity: number,
   subtotalPrice: number
 }
 type setState = (param?: any) => void;
@@ -20,6 +21,7 @@ export const CartProvider: FC = ({ children }) => {
   const initialState: CartState = {
     cartItemsById: {},
     allCartItemsId: [],
+    totalCartItemsQuantity: 0,
     subtotalPrice: 0
   }
 
@@ -29,6 +31,13 @@ export const CartProvider: FC = ({ children }) => {
   const productcContext = useProduct();
   const { productState } = productcContext;
   useEffect(() => {
+
+    const getCartItemsQuantity = (cartItems: CartImtesById): number => {
+      const allQuantities: Array<number> = Object.values(cartItems);
+      const sumQuantities = (acc: number, crr: number): number => acc + crr;
+      const total: number = allQuantities.reduce(sumQuantities, 0);
+      return total;
+    }
 
     const calcSubtotalPrice = (cartState: CartState): number => {
       const { allCartItemsId, cartItemsById } = cartState;
@@ -44,6 +53,7 @@ export const CartProvider: FC = ({ children }) => {
 
     setCartState((state: CartState): CartState => ({
       ...state,
+      totalCartItemsQuantity: getCartItemsQuantity(state.cartItemsById),
       subtotalPrice: calcSubtotalPrice(state)
     }))
   },

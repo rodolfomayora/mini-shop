@@ -15,11 +15,13 @@ import {
 const Checkout: FC = () => {
 
   const productContext = useProduct();
-  const { discountProductsFromStok } = productContext;
+  const { discountProductsFromStok, productState } = productContext;
+  const { productsById } = productState;
 
   const cartContext = useCart();
   const { cartState, emptyCart } = cartContext;
   const { subtotalPrice, cartItemsById, allCartItemsId } = cartState;
+  const { totalCartItemsQuantity } = cartState;
 
   const recordContext = useRecord();
   const { addRecord } = recordContext;
@@ -27,9 +29,21 @@ const Checkout: FC = () => {
   const router = useRouter();
   const redirect = router.push;
 
+  const createCartProducList = (cartItemIds: Array<any>): Array<string> => {
+    const getItemForList = (itemId: string) => {
+      const product: any = productsById[itemId];
+      const productQuantity: number = cartItemsById[itemId];
+      return `${productQuantity} x ${product.name}`;
+    }
+
+    return cartItemIds.map(getItemForList);
+  }
+
   const buyProducts = (values: any) => {
-    const allValues: object = {
+    const allValues: any = {
       ...values,
+      products: createCartProducList(allCartItemsId),
+      totalProducts: totalCartItemsQuantity,
       totalPrice: subtotalPrice,
     };
     addRecord(allValues);

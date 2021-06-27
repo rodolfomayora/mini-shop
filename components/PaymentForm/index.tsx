@@ -3,10 +3,12 @@ import * as Yup from 'yup';
 import MainButton from '../MainButton';
 import { Formik, FormikProps, FormikValues } from 'formik';
 import {
+  ButtonWrapper,
   ErrorMessage,
   FormInput,
   FormLabel,
   FormTextArea,
+  RadioOptions,
   StyledPaymentForm,
 } from './styles';
 
@@ -30,6 +32,11 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
       .required('Required'),
   })
 
+  const paymentMethod: object = {
+    '0': 'Credit Card',
+    '1': 'Crypto'
+  }
+
   return (
     <Formik
       initialValues={{
@@ -37,6 +44,7 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
         name: '',
         lastname: '',
         address: '',
+        paymentMethod: paymentMethod[0]
       }}
 
       validationSchema={formSchema}
@@ -121,14 +129,45 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
           && <ErrorMessage>{errors.address}</ErrorMessage>}
         </p>
 
-        <MainButton
-          type="button"
-          onClickAction={handleSubmit}
-          // enable only if previous field is valid
-          disabled={!values.address}
-        >
-          PAY
-        </MainButton>
+        <p>
+          <FormLabel>Payment Method:</FormLabel>
+          <RadioOptions>
+            <FormLabel>
+              <input name="paymentMethod"
+                type="radio"
+                value={paymentMethod[0]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                checked={values.paymentMethod === paymentMethod[0]}
+                disabled={!values.address || !!errors.address}
+              />
+              {` ${paymentMethod[0]}`}
+            </FormLabel>
+
+            <FormLabel>
+              <input name="paymentMethod"
+                type="radio"
+                value={paymentMethod[1]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                checked={values.paymentMethod === paymentMethod[1]}
+                disabled={!values.address || !!errors.address}
+              />
+              {` ${paymentMethod[1]}`}
+            </FormLabel>
+          </RadioOptions>
+        </p>
+
+        <ButtonWrapper>
+          <MainButton
+            type="button"
+            onClickAction={handleSubmit}
+            // enable only if previous field is valid
+            disabled={!values.address || !!errors.address}
+          >
+            PAY
+          </MainButton>
+        </ButtonWrapper>
       </StyledPaymentForm>
     )}
     </Formik>
