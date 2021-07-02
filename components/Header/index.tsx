@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+
 import Link from 'next/link';
+
 import Container from '../Container';
 import CartButton from '../CartButton';
 import {
