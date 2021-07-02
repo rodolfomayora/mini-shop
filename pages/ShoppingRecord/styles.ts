@@ -29,3 +29,7 @@ export const SummaryProductsList = styled.ul`
   list-style: circle;
   padding-left: 30px; 
 `;
+
+export const NoRecordMessage = styled.p`
+  text-align: center;
+`;

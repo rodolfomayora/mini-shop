@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 import { Layout } from '../../components';
 import { useRecord } from '../../context';
 import {
-  StyledRecordItem,
   MainTitle,
-  RecordList,
-  SummaryProductsList,
+  NoRecordMessage,
   RecordId,
+  RecordList,
+  StyledRecordItem,
+  SummaryProductsList,
 } from './styles';
 
 const ShoppingRecord: FC = () => {
@@ -21,30 +22,34 @@ const ShoppingRecord: FC = () => {
 
       <RecordList>
       {areThereRecords && recordState.map((record, index) => {
-        const id: string = (index + 1).toString();
+        const listItemId: string = (index + 1).toString();
+        const recordId: string = listItemId.padStart(5, '0');
+        const recordTotalPrice: string = record.totalPrice.toFixed(2);
         return (
-          <li key={id}>
+          <li key={listItemId}>
             <StyledRecordItem>
-              <RecordId>{`ID: #${id.padStart(5, '0')}`}</RecordId>
+              <RecordId>{`ID: #${recordId}`}</RecordId>
               <p>{`Email: ${record.email}`}</p>
               <p>{`Buyer: ${record.name} ${record.lastname}`}</p>
               <p>{`Address: ${record.address}`}</p>
               <p>{`Payment method: ${record.paymentMethod}`}</p>
               <p>Products did buy:</p>
               <SummaryProductsList>
-              {record.products.map((product) => (
-                <li>{product}</li>
+              {record.products.map((product, index) => (
+                <li key={index.toString()}>{product}</li>
               ))}
               </SummaryProductsList>
               <p>{`Total products: ${record.totalProducts}`}</p>
-              <p>{`Total did pay: $${record.totalPrice.toFixed(2)}`}</p>
+              <p>{`Total did pay: $${recordTotalPrice}`}</p>
             </StyledRecordItem>
           </li>
         )
       })}
+
+      {!areThereRecords && <NoRecordMessage>There are no records</NoRecordMessage>}
       </RecordList>
     </Layout>
-  )
+  );
 }
 
 export default ShoppingRecord;

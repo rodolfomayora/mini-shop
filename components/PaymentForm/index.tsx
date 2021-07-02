@@ -60,7 +60,7 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
       handleSubmit
     }: FormikProps<FormikValues>) => (
       <StyledPaymentForm autoComplete="off">
-        <p>
+        <div>
           <FormLabel htmlFor="email">Email:</FormLabel>
           <FormInput id="email"
             name="email"
@@ -74,9 +74,9 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
           {touched.email
           && errors.email
           && <ErrorMessage>{errors.email}</ErrorMessage>}
-        </p>
+        </div>
 
-        <p>
+        <div>
           <FormLabel htmlFor="name">Name:</FormLabel>
           <FormInput id="name"
             name="name"
@@ -92,9 +92,9 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
           {touched.name
           && errors.name
           && <ErrorMessage>{errors.name}</ErrorMessage>}
-        </p>
+        </div>
 
-        <p>
+        <div>
           <FormLabel htmlFor="lastname">Lastname:</FormLabel>
           <FormInput id="lastname"
             name="lastname"
@@ -110,9 +110,9 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
           {touched.lastname
           && errors.lastname
           && <ErrorMessage>{errors.lastname}</ErrorMessage>}
-        </p>
+        </div>
 
-        <p>
+        <div>
           <FormLabel htmlFor="address">Address:</FormLabel>
           <FormTextArea id="address"
             name="address"
@@ -127,9 +127,9 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
           {touched.address
           && errors.address
           && <ErrorMessage>{errors.address}</ErrorMessage>}
-        </p>
+        </div>
 
-        <p>
+        <div>
           <FormLabel>Payment Method:</FormLabel>
           <RadioOptions>
             <FormLabel>
@@ -156,7 +156,7 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
               {` ${paymentMethod[1]}`}
             </FormLabel>
           </RadioOptions>
-        </p>
+        </div>
 
         <ButtonWrapper>
           <MainButton
