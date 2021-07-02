@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
+
 import { useRouter } from 'next/router';
-import { CartSummaryItem, Layout, PaymentForm } from '../../components';
+
 import { useProduct, useCart, useRecord } from '../../context';
+import { CartSummaryItem, Layout, PaymentForm } from '../../components';
 import {
   CartSummaryList,
   CheckoutContent,
@@ -76,7 +78,7 @@ const Checkout: FC = () => {
         </FormSection>
       </CheckoutContent>
     </Layout>
-  )
+  );
 }
 
 export default Checkout;

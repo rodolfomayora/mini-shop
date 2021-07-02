@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+
 import { useRouter } from 'next/router';
+
 import { useProduct, useCart } from '../../context';
 import { ImageWrapper, MainButton } from '../../components';
 import {
@@ -46,7 +48,7 @@ const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
         </MainButton>
       </InfoWrapper>
     </StyledProductPreview>
-  )
+  );
 }
 
 export default ProductPreview;

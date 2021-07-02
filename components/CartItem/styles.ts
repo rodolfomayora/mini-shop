@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { colors, breakpoints } from '../../styles/config';
 
 export const StyledCartItem = styled.article`

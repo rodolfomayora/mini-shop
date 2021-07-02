@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { breakpoints, colors } from '../../styles/config';
 
 export const MainTitle = styled.h1`

@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
+
 import { useRouter } from 'next/router';
 import { useCart } from '../../context';
 import {
@@ -58,7 +59,7 @@ const Cart: FC = () => {
         </CartSummary>
       </CartContent>
     </Layout>
-  )
+  );
 }
 
 export default Cart;

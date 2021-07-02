@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+
 import { ProductProvider, CartProvider, RecordProvider } from '../context';
 import GlobalStyles from '../styles/GlobalStyles';
 
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </CartProvider>
       </ProductProvider>
     </>
-  )
+  );
 }
 
 export default MyApp

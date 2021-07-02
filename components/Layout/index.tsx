@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+
 import Head from 'next/head';
+
 import Container from '../Container';
 import Header from '../Header';
 import { MainContent } from './styles';
