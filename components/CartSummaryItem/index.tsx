@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import ImageWrapper from '../ImageWrapper';
+
 import { useProduct, useCart } from '../../context';
+import ImageWrapper from '../ImageWrapper';
 import {
   StyledCartSummaryItem,
   ImageContainer,

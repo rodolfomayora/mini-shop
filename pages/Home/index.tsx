@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
+
 import { Layout, ProductPreview } from '../../components';
 import { useProduct } from '../../context';
-// import sampleProducts from '../../data/products.json';
 import { ProductGrid, MainTitle } from './styles';
 
 const Home: FC = () => {
@@ -27,7 +27,7 @@ const Home: FC = () => {
       ))}
       </ProductGrid>
     </Layout>
-  )
+  );
 }
 
 export default Home;

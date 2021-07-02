@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { colors } from '../../styles/config';
 
 export const StyledPaymentForm = styled.form`

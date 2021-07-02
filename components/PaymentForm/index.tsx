@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import * as Yup from 'yup';
-import MainButton from '../MainButton';
+
 import { Formik, FormikProps, FormikValues } from 'formik';
+import * as Yup from 'yup';
+
+import MainButton from '../MainButton';
 import {
   ButtonWrapper,
   ErrorMessage,
@@ -171,7 +173,7 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
       </StyledPaymentForm>
     )}
     </Formik>
-  )
+  );
 }
 
 export default PaymentForm;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { colors } from '../../styles/config';
 
 export const StyledProductPreview = styled.article`

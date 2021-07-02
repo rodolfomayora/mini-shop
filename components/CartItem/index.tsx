@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+
 import { useRouter } from 'next/router';
+
 import { useProduct, useCart } from '../../context';
 import { ImageWrapper } from '../../components';
 import {

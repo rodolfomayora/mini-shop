@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+
 import { useRouter } from 'next/router';
-import { ImageWrapper, MainButton } from '../../components';
-import { Layout } from '../../components';
+
+import { ImageWrapper, MainButton, Layout } from '../../components';
 import { useProduct, useCart } from '../../context';
 import {
   DetailLayout,
@@ -47,7 +48,7 @@ const Product: FC = () => {
         </InfoContainer>
       </DetailLayout>
     </Layout>
-  )
+  );
 }
 
 export default Product;
