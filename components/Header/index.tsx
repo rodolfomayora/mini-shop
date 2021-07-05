@@ -16,16 +16,16 @@ const Header: FC = () => (
   <StyledHeader>
     <Container>
       <HeaderWrapper>
-        <Link href="/">
+        <Link href="/" passHref>
           <a><Title className="tittle">SHOP</Title></a>
         </Link>
         
         <NavigationButton>
-          <Link href="/">
+          <Link href="/" passHref>
             <LinkText>Home</LinkText>
           </Link>
 
-          <Link href="/ShoppingRecord">
+          <Link href="/ShoppingRecord" passHref>
             <LinkText>Record</LinkText>
           </Link>
 
