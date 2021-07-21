@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import styled from 'styled-components';
-
 import { useRouter } from 'next/router';
 import { useCart } from '../../context';
 import {
@@ -9,56 +7,21 @@ import {
   Layout,
   MainButton,
 } from '../../components';
-
-import { breakpoints, colors } from '../../styles/config';
-
-const MainTitle = styled.h1`
-  margin-bottom: 40px;
-`;
-
-const CartContent = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: ${breakpoints.extraLarge}) {
-    flex-direction: row;
-  }
-`;
-
-const NoProductsMessage = styled.p`
-  font-weight: 600;
-  text-align: center;
-`;
-
-const CartList = styled.ol`
-  flex-grow: 1;
-  margin-bottom: 40px;
-
-  & > * + * { margin-top: 20px; }
-`;
-
-const CartSummary = styled.div`
-  @media screen and (min-width: ${breakpoints.extraLarge}) {
-    width: 400px;
-    margin-left: 40px;
-  }
-`;
-
-export const TotalPriceLabel = styled.p`
-  background-color: ${colors.white2};
-  border-radius: 4px;
-  padding: 10px 20px;
-  box-shadow: ${colors.shadow};
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 40px;
-`;
+import {
+  MainTitle,
+  CartContent,
+  CartList,
+  CartSummary,
+  NoProductsMessage,
+  TotalPriceLabel,
+} from './styles';
 
 const Cart: FC = () => {
 
   const cartContext = useCart();
   const { cartState } = cartContext;
   const { allCartItemsId, subtotalPrice } = cartState;
+  const subTotal: string = subtotalPrice.toFixed(2);
   const doesTheCartHaveProducts: boolean = !!allCartItemsId.length;
   const isButtonEnable: boolean = !doesTheCartHaveProducts;
 
@@ -85,7 +48,7 @@ const Cart: FC = () => {
       
         <CartSummary>
           <TotalPriceLabel>
-            {`Total Price: $${subtotalPrice.toFixed(2)}`}
+            {`Total Price: $${subTotal}`}
           </TotalPriceLabel>
 
           <MainButton

@@ -1,44 +1,15 @@
 import React, { FC, ReactNode } from 'react';
 
-import styled from 'styled-components';
-
 import { Layout } from '../../components';
 import { useRecord } from '../../context';
-import { colors } from '../../styles/config';
-
-const MainTitle = styled.h2`
-  margin-bottom: 40px;
-`;
-
-const RecordList = styled.ol`
-  & > * + * { margin-top: 20px; }
-`;
-
-const StyledRecordItem = styled.div`
-  background-color: ${colors.white2};
-  border-radius: 4px;
-  padding: 20px;
-  box-shadow: ${colors.shadow};
-
-  & > * + * {
-    margin-top: 8px;
-  }
-`;
-
-const RecordId = styled.p`
-  font-weight: 600;
-  font-size: 20px;
-`;
-
-const SummaryProductsList = styled.ul`
-  list-style: circle;
-  padding-left: 30px; 
-`;
-
-const NoRecordMessage = styled.p`
-  text-align: center;
-  font-weight: 600;
-`;
+import {
+  MainTitle,
+  RecordId,
+  RecordList,
+  NoRecordMessage,
+  SummaryProductsList,
+  StyledRecordItem
+} from './styles';
 
 const ShoppingRecord: FC = () => {
 

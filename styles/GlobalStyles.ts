@@ -9,10 +9,14 @@ export default createGlobalStyle`
 
   ${typography}
 
-  html * {
-    box-sizing: border-box;
-    margin: 0;
-    -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+  html {
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+    }
   }
 
   html,
