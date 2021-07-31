@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { breakpoints } from '../../styles/config';
+import { breakpoints, colors } from '../../styles/config';
 
 export const ProductGrid = styled.ul`
   display: grid;
@@ -29,4 +29,8 @@ export const ProductGrid = styled.ul`
 export const MainTitle = styled.h1`
   margin-bottom: 40px;
   text-align: center;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;

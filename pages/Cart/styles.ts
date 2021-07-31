@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { breakpoints, colors } from '../../styles/config';
 
 export const MainTitle = styled.h1`
   margin-bottom: 40px;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;
 
 export const CartContent = styled.div`
@@ -42,4 +46,10 @@ export const TotalPriceLabel = styled.p`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 40px;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+    box-shadow: ${colors.dark.shadow};
+    background-color: ${colors.dark.blue1};
+  `}
 `;

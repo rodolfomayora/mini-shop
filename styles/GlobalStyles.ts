@@ -1,10 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle , css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import typography from './typography';
 import { colors } from './config';
 
-export default createGlobalStyle`
+type Theme = { dark: boolean }
+
+export default createGlobalStyle<{ theme: Theme }>`
   ${normalize} // RESET CSS
 
   ${typography}
@@ -30,6 +32,10 @@ export default createGlobalStyle`
     font-size: 18px;
     color: ${colors.black2};
     background-color: ${colors.white};
+
+    ${({ theme }) => theme.dark && css`
+      background-color: ${colors.dark.black};
+    `}
   }
 
   h1,

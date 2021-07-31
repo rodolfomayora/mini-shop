@@ -8,6 +8,10 @@ export const StyledPaymentForm = styled.form`
 
 export const FormLabel = styled.label`
   line-height: 20px;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;
 
 type FormInputProps = {
@@ -27,13 +31,31 @@ export const FormInput = styled.input<FormInputProps>`
 
   ${props => props.isNoValid && css`
     border-color: ${colors.red};
+
+    ${({ theme }) => theme.dark && css`
+      border-width: 2px;
+      border-color: ${colors.dark.red};
+    `}
   `}
 
   ${props => props.isValid && css`
     border-color: ${colors.green};
-  `}
 
-  &:disabled { cursor: not-allowed; }
+    ${({ theme }) => theme.dark && css`
+      border-width: 2px;
+      border-color: ${colors.dark.green};
+    `}  
+  `}
+  
+
+  &:disabled {
+    cursor: not-allowed;
+
+    ${({ theme }) => theme.dark && css`
+      border-color: ${colors.dark.blue1};
+      background-color: ${colors.dark.blue1};
+    `}  
+  }
 `;
 
 export const FormTextArea = styled.textarea<FormInputProps>`
@@ -50,19 +72,40 @@ export const FormTextArea = styled.textarea<FormInputProps>`
 
   ${props => props.isNoValid && css`
     border-color: ${colors.red};
+
+    ${({ theme }) => theme.dark && css`
+      border-width: 2px;
+      border-color: ${colors.dark.red};
+    `}
   `}
 
   ${props => props.isValid && css`
     border-color: ${colors.green};
+    
+    ${({ theme }) => theme.dark && css`
+      border-width: 2px;
+      border-color: ${colors.dark.green};
+    `}  
   `}
 
-  &:disabled { cursor: not-allowed; }
+  &:disabled {
+    cursor: not-allowed;
+
+    ${({ theme }) => theme.dark && css`
+      border-color: ${colors.dark.blue1};
+      background-color: ${colors.dark.blue1};
+    `}  
+  }
 `;
 
 export const ErrorMessage = styled.p`
   margin-top: 5px;
   font-size: 12px;
   color: ${colors.red};
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.red};
+  `}
 `;
 
 export const RadioOptions = styled.div`

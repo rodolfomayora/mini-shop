@@ -4,7 +4,11 @@ import Head from 'next/head';
 
 import Container from '../Container';
 import Header from '../Header';
-import { MainContent } from './styles';
+import ToggleThemeButton from '../ToggleThemeButton';
+import {
+  FloatButton,
+  MainContent,
+} from './styles';
 
 type LayoutProps = {
   pageTitle: string
@@ -18,11 +22,16 @@ const Layout: FC<LayoutProps> = ({ children, pageTitle }) => (
       <meta name="theme-color" content="#273c75" />
     </Head>
     <Header />
+    
     <MainContent>
       <Container>
         {children}
       </Container>  
     </MainContent>
+
+    <FloatButton>
+      <ToggleThemeButton />
+    </FloatButton>
   </>
 )
 

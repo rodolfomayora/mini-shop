@@ -9,7 +9,7 @@ import {
   DetailLayout,
   ImageContainer,
   InfoContainer,
-  ProductDetailTitle,
+  Title,
 } from './styles';
 
 const ProductDetail: FC = () => {
@@ -31,7 +31,7 @@ const ProductDetail: FC = () => {
 
   return (
     <Layout pageTitle="Product Detail">
-      <ProductDetailTitle>{product?.name ?? ''}</ProductDetailTitle>
+      <Title>{product?.name ?? ''}</Title>
       <DetailLayout>
         <ImageContainer>
           <ImageWrapper productImage={product?.image ?? ''}/>

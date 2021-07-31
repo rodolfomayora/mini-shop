@@ -10,6 +10,12 @@ export const StyledCartItem = styled.article`
   box-shadow: ${colors.shadow};
   overflow: hidden;
 
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+    box-shadow: ${colors.dark.shadow};
+    background-color: ${colors.dark.blue1};
+  `}
+
   @media screen and (min-width: ${breakpoints.small}) {
     flex-direction: row;
   }
@@ -39,6 +45,10 @@ export const ProducName = styled.h3`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;
 
 export const CounterBlock = styled.div`
@@ -71,10 +81,13 @@ export const ActionButton = styled.button<ActionButtonProps>`
     opacity 0s linear;
     cursor: pointer;
 
-  &:hover {
-    background-color: ${colors.marineBlue};
-    border-color: ${colors.marineBlue};
-  }
+  &:hover { background-color: ${colors.marineBlue}; }
+
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.blue2};
+
+    &:hover { background-color: ${colors.dark.blue5}; }
+  `}
 
   &:active {
     transform: scale(0.96);

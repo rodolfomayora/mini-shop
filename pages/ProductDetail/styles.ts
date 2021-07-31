@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { breakpoints } from '../../styles/config';
+import { breakpoints, colors } from '../../styles/config';
 
-export const ProductDetailTitle = styled.h1`
+export const Title = styled.h1`
   margin-bottom: 40px;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;
 
 export const DetailLayout = styled.div`
@@ -31,6 +35,10 @@ export const InfoContainer = styled.div`
 
   & > * + * { margin-top: 20px; }
 
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+  `}
+
   @media screen and (min-width: ${breakpoints.medium}) {
     flex-basis: 50%;
   }
@@ -38,5 +46,9 @@ export const InfoContainer = styled.div`
 
 export const Description = styled.p`
   line-height: 26px;
-  word-spacing: 4px
+  word-spacing: 4px;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+  `}
 `;

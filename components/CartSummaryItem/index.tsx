@@ -3,11 +3,11 @@ import React, { FC } from 'react';
 import { useProduct, useCart } from '../../context';
 import ImageWrapper from '../ImageWrapper';
 import {
-  StyledCartSummaryItem,
   ImageContainer,
   InfoContainer,
   InfoLabel,
   SubtotalPrice,
+  StyledCartSummaryItem,
 } from './styles';
 
 type CartSummaryItemProps = {
