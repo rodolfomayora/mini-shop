@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '../../styles/config';
 
@@ -29,4 +29,8 @@ export const Badge = styled.div`
   font-size: 12px;
   color: ${colors.white};
   background-color: ${colors.black3};
+
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.black};
+  `}
 `;

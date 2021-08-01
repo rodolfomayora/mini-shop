@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from '../../styles/config';
 
@@ -7,6 +7,10 @@ export const StyledCartSummaryItem = styled.article`
   height: 70px;
   background-color: ${colors.white2};
   overflow: hidden;
+
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.blue1};
+  `}
 `;
 
 export const ImageContainer = styled.div`
@@ -27,6 +31,10 @@ export const InfoLabel = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
 `;
 
 export const SubtotalPrice = styled.p`
@@ -35,4 +43,8 @@ export const SubtotalPrice = styled.p`
   white-space: nowrap;
   overflow: hidden;
   margin-top: 8px;
-`
+
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+  `}
+`;

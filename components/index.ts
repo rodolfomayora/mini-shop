@@ -8,3 +8,4 @@ export { default as Layout } from './Layout';
 export { default as MainButton } from './MainButton';
 export { default as PaymentForm } from './PaymentForm';
 export { default as ProductPreview } from './ProductPreview';
+export { default as ToggleThemeButton } from './ToggleThemeButton';
