@@ -1,22 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { useThemeContext } from '../../context';
 import { ToggleThemeButtonStyled } from './styles';
 
 const ToggleThemeButton: FC = () => {
 
-  const { handleToggleTheme } = useThemeContext();
+  const { theme, handleToggleTheme } = useThemeContext();
 
-  const [isDark, setIsDark] = useState<boolean>(false);
-  
-  const handleClick = (): void => {
-    setIsDark(state => !state);
-    handleToggleTheme();
-  }
+  const isDarkThemeActive: boolean = theme?.dark ?? false;
 
   return (
-    <ToggleThemeButtonStyled onClick={handleClick}>
-      {isDark ? (
+    <ToggleThemeButtonStyled onClick={handleToggleTheme}>
+      {isDarkThemeActive ? (
         <img
           src="/images/svg/moon.svg"
           alt="Moon"
