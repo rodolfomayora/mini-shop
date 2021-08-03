@@ -9,7 +9,7 @@ const useCheckout = () => {
   const { productsById } = productState;
 
   const cartContext = useCart();
-  const { cartState, emptyCart } = cartContext;
+  const { cartState, resetCart } = cartContext;
   const { subtotalPrice, cartItemsById, allCartItemsId } = cartState;
   const subTotal: string = subtotalPrice.toFixed(2);
   const { totalCartItemsQuantity } = cartState;
@@ -40,7 +40,7 @@ const useCheckout = () => {
     addRecord(allValues);
     discountProductsFromStok(cartItemsById);
     redirect('/ShoppingRecord');
-    emptyCart();
+    resetCart();
   }
 
   return {
