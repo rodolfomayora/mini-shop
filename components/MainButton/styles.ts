@@ -58,7 +58,7 @@ export const StyledMainButton = styled.button<StyledMainButtonProps>`
     ${({ theme }) => theme.dark && css`
       color: ${colors.dark.blue3};
       border: solid 2px ${colors.dark.blue5};
-      background-color: ${colors.dark.blue2};
+      background-color: ${colors.transparent};
 
       &:hover {
         color: ${colors.dark.white};

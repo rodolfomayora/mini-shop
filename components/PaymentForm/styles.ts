@@ -7,7 +7,7 @@ export const StyledPaymentForm = styled.form`
 `;
 
 export const FormLabel = styled.label`
-  line-height: 20px;
+  line-height: 22px;
 
   ${({ theme }) => theme.dark && css`
     color: ${colors.dark.blue3};
@@ -26,14 +26,20 @@ export const FormInput = styled.input<FormInputProps>`
   color: ${colors.black1};
   border-radius: 5px;
   border: solid 1px ${colors.black1};
+  background-color: ${colors.white2};
   overflow: hidden;
   outline: none;
+
+  ${({ theme }) => theme.dark && css`
+    border-color: ${colors.dark.blue3};
+    background-color: ${colors.dark.black};
+    color: ${colors.dark.white};
+  `}  
 
   ${props => props.isNoValid && css`
     border-color: ${colors.red};
 
     ${({ theme }) => theme.dark && css`
-      border-width: 2px;
       border-color: ${colors.dark.red};
     `}
   `}
@@ -42,7 +48,6 @@ export const FormInput = styled.input<FormInputProps>`
     border-color: ${colors.green};
 
     ${({ theme }) => theme.dark && css`
-      border-width: 2px;
       border-color: ${colors.dark.green};
     `}  
   `}
@@ -70,11 +75,16 @@ export const FormTextArea = styled.textarea<FormInputProps>`
   overflow: hidden;
   outline: none;
 
+  ${({ theme }) => theme.dark && css`
+    border-color: ${colors.dark.blue3};
+    background-color: ${colors.dark.black};
+    color: ${colors.dark.white};
+  `} 
+
   ${props => props.isNoValid && css`
     border-color: ${colors.red};
 
     ${({ theme }) => theme.dark && css`
-      border-width: 2px;
       border-color: ${colors.dark.red};
     `}
   `}
@@ -83,7 +93,6 @@ export const FormTextArea = styled.textarea<FormInputProps>`
     border-color: ${colors.green};
     
     ${({ theme }) => theme.dark && css`
-      border-width: 2px;
       border-color: ${colors.dark.green};
     `}  
   `}
