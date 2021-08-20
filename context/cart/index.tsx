@@ -172,9 +172,10 @@ export const CartProvider: FC = ({ children }) => {
 }
 
 export const useCart = () => {
-  const context = useContext(CartStateContext);
-  if (!context) throw new Error('useCart must be used within CartProvider');
-  const { cartState, dispatch } = context;
+  const cartContext = useContext(CartStateContext);
+  const doesContextNotExist: boolean = !cartContext;
+  if (doesContextNotExist) throw new Error('useCart must be used within CartProvider');
+  const { cartState, dispatch } = cartContext;
 
   const productContext = useProduct(); 
   const { productState } = productContext;

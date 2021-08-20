@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useProduct, useCart } from '../../context';
 import { ImageWrapper, MainButton } from '../../components';
 import {
+  AvailabiityTag,
   InfoWrapper,
   ProductTitle,
   ProductPrice,
@@ -21,6 +22,7 @@ const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
   const { productState } = productContext;
   const { productsById } = productState;
   const product = productsById[productId];
+  const areThereNotProductInStock: boolean = !product.quantity;
 
   const cartContext = useCart();
   const { addToCart } = cartContext;
@@ -37,8 +39,10 @@ const ProductPreview: FC<ProductPreviewProps> = ({ productId }) => {
 
   return (
     <StyledProductPreview onClick={onClickRedirect}>
+      {areThereNotProductInStock && (
+        <AvailabiityTag>No disponible</AvailabiityTag>
+      )}
       <ImageWrapper productImage={product.image}/>
-
       <InfoWrapper>
         <ProductTitle>{product.name}</ProductTitle>
         <ProductPrice>{`$${product.price.toFixed(2)}`}</ProductPrice>

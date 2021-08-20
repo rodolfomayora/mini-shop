@@ -60,7 +60,8 @@ export const ThemeContextProvider: FC = ({ children }) => {
 export const useThemeContext = () => {
 
   const context = useContext(themeContext);
-  if (!context) throw new Error('useThemeContext must be used within ThemeContextProvider');
+  const doesContextNotExist: boolean = !context;
+  if (doesContextNotExist) throw new Error('useThemeContext must be used within ThemeContextProvider');
   const { theme, setTheme } = context;
 
   const handleToggleTheme = () => {
