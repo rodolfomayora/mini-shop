@@ -15,9 +15,8 @@ const Home: FC = () => {
   const areThereProducts: boolean = !!allProductsId.length;
 
   return (
-    <Layout pageTitle={'Home'}>
+    <Layout pageTitle='Home'>
       <MainTitle>Products</MainTitle>
-
       <ProductGrid>
       {areThereProducts && allProductsId.map((productId: string) => (
         <li key={productId}>

@@ -6,6 +6,7 @@ import {
   RecordProvider,
   ThemeContextProvider
 } from '../context';
+import { SplashScreen } from '../components';
 import GlobalStyles from '../styles/GlobalStyles';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
@@ -14,6 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       <RecordProvider>
         <ThemeContextProvider>
           <GlobalStyles />
+          <SplashScreen />
           <Component {...pageProps} />
         </ThemeContextProvider>
       </RecordProvider>
