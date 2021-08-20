@@ -203,7 +203,7 @@ export const useCart = () => {
 
   const removeFromCart = (productId: string): void => {
     dispatch({
-      type: 'DISCOUNT_FROM_CART',
+      type: 'REMOVE_FROM_CART',
       productId
     });
   }

@@ -47,20 +47,16 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
 
       <InfoContainer>
         <ProducName>{currentProduct.name}</ProducName>
-
         <p>{`Price: $${currentProduct.price.toFixed(2)}`}</p>
-
         <p>{`Subtotal: $${subtotal}`}</p>
 
         <CounterBlock>
-
           <ActionButton onClick={onClickRemoveFromCart}>
             <ButtonIcon
               src={'/images/svg/cross.svg'}
-              alt={'plus'}
+              alt={'cross'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
 
           <ActionButton wide onClick={onClickRedirect}>
@@ -70,10 +66,9 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
           <ActionButton onClick={onClickDiscountFromCart}>
             <ButtonIcon
               src={'/images/svg/minus.svg'}
-              alt={'plus'}
+              alt={'minus'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
 
           <Counter>{productQuantityInCart}</Counter>
@@ -83,8 +78,7 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
               src={'/images/svg/plus.svg'}
               alt={'plus'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
         </CounterBlock>
       </InfoContainer>
