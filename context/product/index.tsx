@@ -34,8 +34,8 @@ const reducer = (state: ProductState, action: Action): ProductState => {
 
     case 'ADD_PRODUCTS': {
       const { data } = action;
-      const getId = (product: any) => product.id.toString();
-      const normalizeList = (acc: ProductsById, crr: any): ProductsById => {
+      const getId = product => product.id.toString();
+      const normalizeList = (acc: ProductsById, crr): ProductsById => {
         const productId: string = getId(crr);
         return ({
           ...acc,
@@ -111,9 +111,10 @@ export const ProductProvider: FC = ({ children }) => {
 
 export const useProduct = () => {
 
-  const context = useContext(ProductStateContext);
-  if (!context) throw new Error('useProduct must be used within ProductProvider');
-  const { productState, dispatch } = context;
+  const productContext = useContext(ProductStateContext);
+  const doesContextNotExist: boolean = !productContext;
+  if (doesContextNotExist) throw new Error('useProduct must be used within ProductProvider');
+  const { productState, dispatch } = productContext;
 
   const discountProductsFromStok = (itemsByIdFromCart: any): void => {
     dispatch({

@@ -55,6 +55,8 @@ export const FormInput = styled.input<FormInputProps>`
 
   &:disabled {
     cursor: not-allowed;
+    background-color: ${colors.white};
+
 
     ${({ theme }) => theme.dark && css`
       border-color: ${colors.dark.blue1};

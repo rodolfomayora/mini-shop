@@ -55,7 +55,9 @@ export const RecordProvider: FC = ({ children }) => {
 export const useRecord = () => {
   
   const recordContext = useContext(RecordStateContext);
-  if (!recordContext) throw new Error('useRecord must be used within RecordProvider');
+  const doesContextNotExist: boolean = !recordContext;
+
+  if (doesContextNotExist) throw new Error('useRecord must be used within RecordProvider');
   const { recordState, dispatch } = recordContext;
 
   const addRecord = (shoppingRecord: ShoppingRecord) => {

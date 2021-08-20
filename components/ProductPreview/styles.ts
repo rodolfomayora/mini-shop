@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { colors } from '../../styles/config';
 
 export const StyledProductPreview = styled.article`
+  position: relative;
   box-shadow: ${colors.shadow};
   border-radius: 4px;
   background-color: ${colors.white2};
@@ -12,6 +13,24 @@ export const StyledProductPreview = styled.article`
   ${({ theme }) => theme.dark && css`
     box-shadow: ${colors.dark.shadow};
     background-color: ${colors.dark.blue1};
+  `}
+`;
+
+export const AvailabiityTag = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: ${colors.white};
+  background-color: ${colors.red};
+  opacity: 0.8;
+
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.red};
   `}
 `;
 
