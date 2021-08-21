@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import { useRouter } from 'next/router';
 import { useCart } from '../../context';
@@ -22,24 +22,25 @@ const Cart: FC = () => {
   const { cartState } = cartContext;
   const { allCartItemsId, subtotalPrice } = cartState;
   const subTotal: string = subtotalPrice.toFixed(2);
-  const doesTheCartHaveProducts: boolean = !!allCartItemsId.length;
-  const isButtonEnable: boolean = !doesTheCartHaveProducts;
+  const doesCartHasProducts: boolean = !!allCartItemsId.length;
+  const isButtonEnable: boolean = !doesCartHasProducts;
 
   const router = useRouter();
   const redirect = router.push;
   const redirectToCheckout = () => redirect('/Checkout');
 
+  const setCartItems = (cartItemId: string): ReactNode => (
+    <li key={cartItemId}>
+      <CartItem cartItemId={cartItemId} />
+    </li>
+  )
   return (
     <Layout pageTitle={'Cart'}>
       <MainTitle>CART</MainTitle>
 
       <CartContent>
         <CartList>
-        {doesTheCartHaveProducts ? allCartItemsId.map((cartItemId: string) => (
-          <li key={cartItemId}>
-            <CartItem cartItemId={cartItemId} />
-          </li>
-        )) : (
+        {doesCartHasProducts ? allCartItemsId.map(setCartItems) : (
           <NoProductsMessage>
             There are no products in the shopping carts
           </NoProductsMessage>

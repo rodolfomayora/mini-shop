@@ -5,9 +5,9 @@ import { ToggleThemeButtonStyled } from './styles';
 
 const ToggleThemeButton: FC = () => {
 
-  const { handleToggleTheme } = useThemeContext();
+  const { toggleTheme } = useThemeContext();
 
-  return <ToggleThemeButtonStyled onClick={handleToggleTheme} />;
+  return <ToggleThemeButtonStyled onClick={toggleTheme} />;
 }
 
 export default ToggleThemeButton;

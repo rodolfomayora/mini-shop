@@ -1,17 +1,8 @@
 import { FC, createContext, useContext, useEffect, useReducer } from 'react';
-import sampleProducts from '../../data/products.json';
 
-type Product = {
-  id: string,
-  image: string
-  name: string,
-  description: string,
-  price: number,
-  quantity: number,
-}
-type ProductsById = {
-  [productId: string]: Product
-}
+import sampleProducts from '../../data/products.json';
+import { ProductsById } from '../../models/productContext';
+
 type ProductState = {
   productsById: ProductsById,
   allProductsId: Array<string>,

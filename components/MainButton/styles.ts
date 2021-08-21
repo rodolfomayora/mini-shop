@@ -45,7 +45,7 @@ export const StyledMainButton = styled.button<StyledMainButtonProps>`
   /* Outline Styles */
   ${props => props.outline && css`
     border-color: ${colors.black3};
-    background-color: ${colors.white2};
+    background-color: ${colors.transparent};
     color: ${colors.black3};
     font-weight: 700;
 

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { colors } from '../../styles/config';
 
-export const StyledProductPreview = styled.article`
+export const StyledProductCard = styled.article`
   position: relative;
   box-shadow: ${colors.shadow};
   border-radius: 4px;
@@ -16,7 +16,7 @@ export const StyledProductPreview = styled.article`
   `}
 `;
 
-export const AvailabiityTag = styled.div`
+export const AvailabilityTag = styled.div`
   position: absolute;
   z-index: 1;
   top: 0;
@@ -27,7 +27,7 @@ export const AvailabiityTag = styled.div`
   font-weight: 600;
   color: ${colors.white};
   background-color: ${colors.red};
-  opacity: 0.8;
+  opacity: 0.9;
 
   ${({ theme }) => theme.dark && css`
     background-color: ${colors.dark.red};

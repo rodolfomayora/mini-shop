@@ -1,4 +1,11 @@
-import { FC, createContext, useContext, useEffect, useReducer } from 'react';
+import {
+  FC,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer
+} from 'react';
 import { useProduct } from "../product";
 
 type ProductQuantity = number;
@@ -181,32 +188,35 @@ export const useCart = () => {
   const { productState } = productContext;
   const { productsById } = productState;
 
-  const addToCart = (productId: string): void => {
+  const addToCart = useCallback((productId: string): void => {
     const maxProductStockLimit: number = productsById[productId].quantity;
-    const addToCartPayload = {
-      maxProductStockLimit,
-      productId
-    }
-    
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: addToCartPayload
-    });
-  }
+      const payload = {
+        maxProductStockLimit,
+        productId
+      }
+      
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload
+      });
+  },
+  [productsById]);
 
-  const discountFromCart = (productId: string): void => {
+  const discountFromCart = useCallback((productId: string): void => {
     dispatch({
       type: 'DISCOUNT_FROM_CART',
       productId
     });
-  }
+  },
+  []);
 
-  const removeFromCart = (productId: string): void => {
+  const removeFromCart = useCallback((productId: string): void => {
     dispatch({
       type: 'REMOVE_FROM_CART',
       productId
     });
-  }
+  },
+  []);
 
   const resetCart = (): void => {
     dispatch({ type: 'RESET_CART' });

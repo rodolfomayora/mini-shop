@@ -1,4 +1,10 @@
-import React, { FC, createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  FC,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -64,7 +70,7 @@ export const useThemeContext = () => {
   if (doesContextNotExist) throw new Error('useThemeContext must be used within ThemeContextProvider');
   const { theme, setTheme } = context;
 
-  const handleToggleTheme = () => {
+  const toggleTheme = () => {
     setTheme(theme => ({
       ...theme,
       dark: !theme.dark,
@@ -74,6 +80,6 @@ export const useThemeContext = () => {
   return {
     theme,
     setTheme,
-    handleToggleTheme,
+    toggleTheme,
   };
 }

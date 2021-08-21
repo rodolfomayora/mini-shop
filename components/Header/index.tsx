@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import Link from 'next/link';
 
-import { useThemeContext } from '../../context';
 import Container from '../Container';
 import CartButton from '../CartButton';
 import {
@@ -38,4 +37,4 @@ const Header: FC = () => (
   </StyledHeader>
 );
 
-export default Header;
+export default memo(Header);
