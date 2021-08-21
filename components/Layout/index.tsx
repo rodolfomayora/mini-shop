@@ -17,6 +17,7 @@ const Layout: FC<LayoutProps> = ({ children, pageTitle }) => (
       <meta charSet='UTF-8' />
       <meta name="theme-color" content="#273c75" />
     </Head>
+
     <Header />
     <MainContent>
       <Container>

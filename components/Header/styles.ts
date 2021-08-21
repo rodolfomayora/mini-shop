@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors, breakpoints } from '../../styles/config';
 
@@ -7,6 +7,10 @@ export const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
   background-color: ${colors.marineBlue};
+
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.blue4};
+  `}
 `;
 
 export const HeaderWrapper = styled.div`
@@ -30,7 +34,10 @@ export const Title = styled.h2`
 `;
 
 export const NavigationButton = styled.nav`
-  & > * + * {
+  display: flex;
+  align-items: center;
+  
+  > * + * {
     margin-left: 12px;
 
     @media screen and (min-width: ${breakpoints.small}) {

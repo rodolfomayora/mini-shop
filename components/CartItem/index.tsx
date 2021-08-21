@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -25,21 +25,22 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
   const { productState } = productContext;
   const { productsById } = productState;
   const currentProduct = productsById[cartItemId];
+  const formatedPrice: string = currentProduct.price.toFixed(2);
 
   const cartContext = useCart();
   const { cartState, removeFromCart, addToCart, discountFromCart } = cartContext;
   const { cartItemsById } = cartState;
   const productQuantityInCart: number = cartItemsById[cartItemId];
   const subtotal: string = (currentProduct.price * productQuantityInCart).toFixed(2);
-  const onClickAddToCart = () => addToCart(cartItemId);
-  const onClickDiscountFromCart = () => discountFromCart(cartItemId);
-  const onClickRemoveFromCart = () => removeFromCart(cartItemId);
 
   const router = useRouter();
   const redirect = router.push;
-  const onClickRedirect = () => redirect(`/ProductDetail/${cartItemId}`);
+  const onClickRedirect = useCallback(() => {
+    return redirect(`/ProductDetail/${cartItemId}`);
+  },
+  [cartItemId, redirect]);
 
-  return (
+  return useMemo(() => (
     <StyledCartItem>
       <ImageContainer>
         <ImageWrapper productImage={currentProduct.image}/>
@@ -47,49 +48,55 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
 
       <InfoContainer>
         <ProducName>{currentProduct.name}</ProducName>
-
-        <p>{`Price: $${currentProduct.price.toFixed(2)}`}</p>
-
+        <p>{`Price: $${formatedPrice}`}</p>
         <p>{`Subtotal: $${subtotal}`}</p>
 
         <CounterBlock>
-
-          <ActionButton onClick={onClickRemoveFromCart}>
+          <ActionButton onClick={() => removeFromCart(cartItemId)}>
             <ButtonIcon
               src={'/images/svg/cross.svg'}
-              alt={'plus'}
+              alt={'cross'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
 
           <ActionButton wide onClick={onClickRedirect}>
             Detail
           </ActionButton>
 
-          <ActionButton onClick={onClickDiscountFromCart}>
+          <ActionButton onClick={() => discountFromCart(cartItemId)}>
             <ButtonIcon
               src={'/images/svg/minus.svg'}
-              alt={'plus'}
+              alt={'minus'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
 
           <Counter>{productQuantityInCart}</Counter>
 
-          <ActionButton onClick={onClickAddToCart}>
+          <ActionButton onClick={() => addToCart(cartItemId)}>
             <ButtonIcon
               src={'/images/svg/plus.svg'}
               alt={'plus'}
               width="10px"
-              height="10px"
-            />
+              height="10px" />
           </ActionButton>
         </CounterBlock>
       </InfoContainer>
     </StyledCartItem>
-  )
+  ),
+  [
+    cartItemId,
+    currentProduct.name,
+    currentProduct.image,
+    formatedPrice,
+    productQuantityInCart,
+    subtotal,
+    removeFromCart,
+    addToCart,
+    discountFromCart,
+    onClickRedirect,
+  ]);
 }
 
 export default CartItem;

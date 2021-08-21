@@ -1,51 +1,16 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
 import { ImageWrapper, MainButton, Layout } from '../../components';
 import { useProduct, useCart } from '../../context';
-import { breakpoints } from '../../styles/config';
-
-const ProductDetailTitle = styled.h1`
-  margin-bottom: 40px;
-`;
-
-const DetailLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  
-  @media screen and (min-width: ${breakpoints.medium}) {
-    flex-direction: row;
-  }
-`;
-
-const ImageContainer = styled.div`
-  margin-bottom: 40px;
-  overflow: hidden;
-  border-radius: 4px;
-
-  @media screen and (min-width: ${breakpoints.medium}) {
-    flex-basis: 50%;
-    margin-bottom: 0;
-    margin-right: 40px;
-  }
-`;
-
-const InfoContainer = styled.div`
-
-  & > * + * { margin-top: 20px; }
-
-  @media screen and (min-width: ${breakpoints.medium}) {
-    flex-basis: 50%;
-  }
-`;
-
-const Description = styled.p`
-  line-height: 26px;
-  word-spacing: 4px
-`;
-
+import {
+  Description,
+  DetailLayout,
+  ImageContainer,
+  InfoContainer,
+  Title,
+} from './styles';
 
 const ProductDetail: FC = () => {
 
@@ -66,7 +31,7 @@ const ProductDetail: FC = () => {
 
   return (
     <Layout pageTitle="Product Detail">
-      <ProductDetailTitle>{product?.name ?? ''}</ProductDetailTitle>
+      <Title>{product?.name ?? ''}</Title>
       <DetailLayout>
         <ImageContainer>
           <ImageWrapper productImage={product?.image ?? ''}/>
