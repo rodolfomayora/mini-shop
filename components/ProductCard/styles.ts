@@ -37,7 +37,7 @@ export const AvailabilityTag = styled.div`
 export const InfoWrapper = styled.div`
   padding: 20px;
 
-  & > * + * { margin-top: 20px; }
+  > * + * { margin-top: 20px; }
 `;
 
 export const ProductTitle = styled.h3`

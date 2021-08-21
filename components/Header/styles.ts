@@ -34,7 +34,10 @@ export const Title = styled.h2`
 `;
 
 export const NavigationButton = styled.nav`
-  & > * + * {
+  display: flex;
+  align-items: center;
+  
+  > * + * {
     margin-left: 12px;
 
     @media screen and (min-width: ${breakpoints.small}) {

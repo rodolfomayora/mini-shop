@@ -15,10 +15,3 @@ export const MainContent = styled.main`
     padding-bottom: 60px;
   }
 `;
-
-export const FloatButton = styled.div`
-  position: fixed;
-  z-index: 3;
-  bottom: 40px;
-  right: 40px;
-`;

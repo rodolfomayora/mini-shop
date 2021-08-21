@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Container from '../Container';
 import CartButton from '../CartButton';
+import ToggleThemeButton from '../ToggleThemeButton';
 import {
   HeaderWrapper,
   LinkText,
@@ -24,13 +25,11 @@ const Header: FC = () => (
           <Link href="/" passHref>
             <LinkText>Home</LinkText>
           </Link>
-
           <Link href="/ShoppingRecord" passHref>
             <LinkText>Record</LinkText>
           </Link>
-
+          <ToggleThemeButton />
           <CartButton />
-          
         </NavigationButton>
       </HeaderWrapper>
     </Container>
