@@ -6,7 +6,8 @@ import React, {
   useState,
 } from 'react';
 
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components'
+
 
 type Theme = {
   dark: boolean
@@ -34,7 +35,7 @@ export const ThemeContextProvider: FC = ({ children }) => {
       }
     }
 
-    getThemeLocalStorage()
+    if (typeof window !== 'undefined') getThemeLocalStorage();
   },
   [])
 
