@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app';
-
 import {
   ProductProvider,
   CartProvider,
@@ -15,7 +14,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       <RecordProvider>
         <ThemeContextProvider>
           <GlobalStyles />
-          <SplashScreen />
+          {process.env.NODE_ENV === 'production' && <SplashScreen />}
           <Component {...pageProps} />
         </ThemeContextProvider>
       </RecordProvider>
