@@ -12,7 +12,7 @@
     "start:docker": "docker compose --profile prod up",
     "test": "vitest --run --reporter verbose",
     "test:docker": "docker compose run mini-shop-dev pnpm test",
-    "converage": "vitest --coverage",
+    "coverage": "vitest --coverage",
     "prepare": "husky",
     "cz": "cz"
   },

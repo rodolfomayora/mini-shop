@@ -21,19 +21,3 @@ COPY . .
 FROM base AS dev
 EXPOSE 3001
 CMD pnpm dev
-
-# Build STAGE
-FROM base as build
-RUN pnpm build
-# heads up!! this should be 'RUN' not 'CMD'
-
-# Production STAGE (container image optimization)
-# Nginx or Apache Server for Frontend 
-FROM nginx:1.25.4-alpine AS prod
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
-EXPOSE  80
-# Nginx default port is 80
-# In case i want to use a custom 'nginx.conf'
-# COPY nginx.conf /etc/nginx/nginx.conf
-# EXPOSE  8989
-CMD ["nginx", "-g", "daemon off;"]
