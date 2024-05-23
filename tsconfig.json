@@ -18,6 +18,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": "./src",
+    "paths": {
+      "#components/*": ["./components/*"],
+    },
     "types": ["vitest/globals"]
   },
   "include": [
