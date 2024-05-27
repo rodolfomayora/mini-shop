@@ -1,7 +1,8 @@
 import { FC, createContext, useContext, useEffect, useReducer } from 'react';
 
-import sampleProducts from '../../data/products.json';
-import { ProductsById } from '../../models/productContext';
+import type { ProductsById } from '../../models/productContext';
+// import sampleProducts from '../../data/products.json';
+import { getProducts } from '#services/fakestoreapi';
 
 type ProductState = {
   productsById: ProductsById,
@@ -78,18 +79,29 @@ export const ProductProvider: FC = ({ children }) => {
 
   const initialState: ProductState = {
     productsById: {},
-    allProductsId: []
+    allProductsId: [],
   }
 
   const [productState, dispatch] = useReducer(reducer, initialState);
- 
+
   useEffect(() => {
-   dispatch({
-     type: 'ADD_PRODUCTS',
-     data: sampleProducts
-   });
-  },
-  [])
+
+    async function getData () {
+      const producst = await getProducts();
+      dispatch({
+        type: 'ADD_PRODUCTS',
+        data: producst
+      });
+    }
+
+    getData();
+
+    // dispatch({
+    //   type: 'ADD_PRODUCTS',
+    //   data: sampleProducts
+    // });
+
+  }, []);
   
   const value: ProductContext = { productState, dispatch };
 
