@@ -21,6 +21,9 @@
     "baseUrl": "./src",
     "paths": {
       "#components/*": ["./components/*"],
+      "#lib/*": ["./lib/*"],
+      "#services/*": ["./services/*"],
+      "#utils/*": ["./utils/*"],
     },
     "types": ["vitest/globals"]
   },
