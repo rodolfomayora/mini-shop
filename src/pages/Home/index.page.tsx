@@ -38,9 +38,19 @@ const Home: FC = () => {
   return (
     <Layout pageTitle='Home'>
       <MainTitle>Products</MainTitle>
-      <ProductGrid>
-      {areThereProducts && allProductsId.map(setProductCards(productsById))}
-      </ProductGrid>
+        {areThereProducts ? (
+          <ProductGrid>
+            {allProductsId.map(setProductCards(productsById))}
+          </ProductGrid>
+        ) : (
+          <div style={{
+            width: "100%",
+            height: "40svh",
+            display: "grid",
+            placeContent: "center",
+            fontWeight: 800,
+          }}>Loading...</div>
+        )}
     </Layout>
   );
 }
