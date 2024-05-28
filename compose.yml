@@ -1,0 +1,36 @@
+name: mini-shop
+
+services:
+  # Development Service: docker compose --profile dev up --watch
+  mini-shop-dev:
+    build:
+      context: .
+      target: dev
+    image: mini-shop-dev:1.0
+    container_name: mini-shop-dev
+    ports:
+      - 3001:3001
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /usr/src/app
+          ignore:
+            - package.json
+        - action: rebuild
+          path: package.json
+    profiles:
+      - dev
+
+  # Production Service: docker compose --profile prod build
+  mini-shop-prod:
+    build:
+      context: .
+      target: prod  
+    image: mini-shop-prod:1.0
+    container_name: mini-shop-prod
+    mem_limit: 1024m # good practice for production
+    ports:
+      - 3002:80
+    profiles:
+      - prod
