@@ -12,7 +12,7 @@ import {
   Title,
 } from './styles';
 
-const ProductDetail: FC = () => {
+const Product: FC = () => {
 
   const router = useRouter();
   const { query, push: redirect } = router;
@@ -49,4 +49,4 @@ const ProductDetail: FC = () => {
   );
 }
 
-export default ProductDetail;
+export default Product;

@@ -39,7 +39,7 @@ const useCheckout = () => {
     };
     addRecord(allValues);
     discountProductsFromStok(cartItemsById);
-    redirect('/ShoppingRecord');
+    redirect('/record');
     resetCart();
   }
 

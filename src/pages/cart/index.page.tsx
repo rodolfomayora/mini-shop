@@ -27,24 +27,27 @@ const Cart: FC = () => {
 
   const router = useRouter();
   const redirect = router.push;
-  const redirectToCheckout = () => redirect('/Checkout');
+  const redirectToCheckout = () => redirect('/checkout');
 
   const setCartItems = (cartItemId: string): ReactNode => (
     <li key={cartItemId}>
       <CartItem cartItemId={cartItemId} />
     </li>
-  )
+  );
+
+  const productsToRender = doesCartHasProducts ? allCartItemsId.map(setCartItems) : (
+    <NoProductsMessage>
+      There are no products in the shopping carts
+    </NoProductsMessage>
+  );
+
   return (
     <Layout pageTitle={'Cart'}>
       <MainTitle>CART</MainTitle>
 
       <CartContent>
         <CartList>
-        {doesCartHasProducts ? allCartItemsId.map(setCartItems) : (
-          <NoProductsMessage>
-            There are no products in the shopping carts
-          </NoProductsMessage>
-        )}
+          {productsToRender}
         </CartList>
       
         <CartSummary>

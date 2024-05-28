@@ -35,22 +35,26 @@ const Home: FC = () => {
     }
   }
 
+  const productsToRender = allProductsId.map(setProductCards(productsById));
+
+  const renderContent = areThereProducts ? (
+    <ProductGrid>
+      {productsToRender}
+    </ProductGrid>
+  ) : (
+    <div style={{
+      width: "100%",
+      height: "40svh",
+      display: "grid",
+      placeContent: "center",
+      fontWeight: 800,
+    }}>Loading...</div>
+  );
+
   return (
     <Layout pageTitle='Home'>
       <MainTitle>Products</MainTitle>
-        {areThereProducts ? (
-          <ProductGrid>
-            {allProductsId.map(setProductCards(productsById))}
-          </ProductGrid>
-        ) : (
-          <div style={{
-            width: "100%",
-            height: "40svh",
-            display: "grid",
-            placeContent: "center",
-            fontWeight: 800,
-          }}>Loading...</div>
-        )}
+        {renderContent}
     </Layout>
   );
 }

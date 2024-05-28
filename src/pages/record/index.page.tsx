@@ -11,7 +11,7 @@ import {
   StyledRecordItem
 } from './styles';
 
-const ShoppingRecord: FC = () => {
+const Record: FC = () => {
 
   const recordContext = useRecord();
   const { recordState } = recordContext;
@@ -55,4 +55,4 @@ const ShoppingRecord: FC = () => {
   );
 }
 
-export default ShoppingRecord;
+export default Record;
