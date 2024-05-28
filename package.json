@@ -1,12 +1,20 @@
 {
-  "name": "spa-test-rodolfo",
+  "name": "mini-shop",
   "version": "2.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 0.0.0.0 --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "dev:docker": "docker compose --profile dev up --build --watch",
+    "build:docker": "docker compose --profile prod build",
+    "start:docker": "docker compose --profile prod up",
+    "test": "vitest --run --reporter verbose",
+    "test:docker": "docker compose run mini-shop-dev pnpm test",
+    "coverage": "vitest --coverage",
+    "prepare": "husky",
+    "cz": "cz"
   },
   "dependencies": {
     "formik": "^2.2.9",
@@ -18,10 +26,27 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@types/node": "^15.14.0",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@testing-library/jest-dom": "6",
+    "@testing-library/react": "12",
+    "@testing-library/user-event": "14",
+    "@types/node": "^18.0.0",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "@types/styled-components": "^5.1.10",
-    "typescript": "^4.3.5"
-  }
+    "@vitejs/plugin-react": "4",
+    "@vitest/coverage-v8": "^1.6.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "typescript": "^5.0.4",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "1"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "packageManager": "pnpm@8.15.8+sha256.691fe176eea9a8a80df20e4976f3dfb44a04841ceb885638fe2a26174f81e65e"
 }
