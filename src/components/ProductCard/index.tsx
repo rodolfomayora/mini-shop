@@ -33,7 +33,7 @@ const ProductCard: FC<ProductCardProps> = props => {
 
   const router = useRouter();
   const redirect = router.push;
-  const onClickRedirect = () => redirect(`/ProductDetail/${productId}`);
+  const onClickRedirect = () => redirect(`/product/${productId}`);
 
   return (
     <StyledProductCard onClick={onClickRedirect}>

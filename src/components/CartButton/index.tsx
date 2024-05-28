@@ -12,7 +12,7 @@ const CartButton: FC = () => {
 
   const router = useRouter();
   const redirect = router.push;
-  const onHandleClick = () => redirect('/Cart');
+  const onHandleClick = () => redirect('/cart');
 
   return (
     <StyledCartButton onClick={onHandleClick}>

@@ -25,7 +25,7 @@ const Header: FC = () => (
           <Link href="/" passHref>
             <LinkText>Home</LinkText>
           </Link>
-          <Link href="/ShoppingRecord" passHref>
+          <Link href="/record" passHref>
             <LinkText>Record</LinkText>
           </Link>
           <ToggleThemeButton />
