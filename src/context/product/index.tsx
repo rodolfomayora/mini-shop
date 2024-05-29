@@ -1,8 +1,8 @@
 import { FC, createContext, useContext, useEffect, useReducer } from 'react';
 
 import type { ProductsById } from '../../models/productContext';
-// import sampleProducts from '../../data/products.json';
 import { getProducts } from '#services/fakestoreapi';
+import { useThrowAsyncError } from '#errors/useThrowAsyncError';
 
 type ProductState = {
   productsById: ProductsById,
@@ -84,23 +84,25 @@ export const ProductProvider: FC = ({ children }) => {
 
   const [productState, dispatch] = useReducer(reducer, initialState);
 
+  const { throwAsyncError } = useThrowAsyncError();
+
   useEffect(() => {
 
     async function getData () {
-      const producst = await getProducts();
-      dispatch({
-        type: 'ADD_PRODUCTS',
-        data: producst
-      });
+      try {
+        const producst = await getProducts();
+        dispatch({
+          type: 'ADD_PRODUCTS',
+          data: producst
+        });
+
+      } catch (error) {
+        throwAsyncError(error);
+
+      }
     }
 
     getData();
-
-    // dispatch({
-    //   type: 'ADD_PRODUCTS',
-    //   data: sampleProducts
-    // });
-
   }, []);
   
   const value: ProductContext = { productState, dispatch };
