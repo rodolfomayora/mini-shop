@@ -1,11 +1,8 @@
-import React, { FC } from 'react';
-
 import { useRouter } from 'next/router';
-
 import { useCart } from '../../context';
 import { StyledCartButton, Badge, CartIcon } from './styles';
 
-const CartButton: FC = () => {
+export function CartButton () {
   const cartContext = useCart();
   const { cartState } = cartContext;
   const { totalCartItemsQuantity } = cartState;
@@ -25,5 +22,3 @@ const CartButton: FC = () => {
     </StyledCartButton>
   )
 }
-
-export default CartButton;
