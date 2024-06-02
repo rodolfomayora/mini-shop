@@ -39,7 +39,7 @@ devDependencies:
     version: 6.4.5(vitest@1.6.0)
   '@testing-library/react':
     specifier: ^15.0.7
-    version: 15.0.7(@types/react@17.0.13)(react-dom@18.2.0)(react@18.2.0)
+    version: 15.0.7(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
   '@testing-library/user-event':
     specifier: '14'
     version: 14.5.2(@testing-library/dom@10.1.0)
@@ -47,11 +47,11 @@ devDependencies:
     specifier: ^20.13.0
     version: 20.13.0
   '@types/react':
-    specifier: ^17.0.13
-    version: 17.0.13
+    specifier: ^18.2.0
+    version: 18.2.0
   '@types/react-dom':
-    specifier: ^17.0.8
-    version: 17.0.8
+    specifier: ^18.2.0
+    version: 18.2.0
   '@types/styled-components':
     specifier: ^5.1.34
     version: 5.1.34
@@ -1177,7 +1177,7 @@ packages:
       vitest: 1.6.0(@types/node@20.13.0)(jsdom@24.1.0)
     dev: true
 
-  /@testing-library/react@15.0.7(@types/react@17.0.13)(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/react@15.0.7(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-cg0RvEdD1TIhhkm1IeYMQxrzy0MtUNfa3minv4MjbgcYzJAZ7yD0i0lwoPOTPr+INtiXFezt2o8xMSnyHhEn2Q==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -1190,8 +1190,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.6
       '@testing-library/dom': 10.1.0
-      '@types/react': 17.0.13
-      '@types/react-dom': 18.3.0
+      '@types/react': 18.2.0
+      '@types/react-dom': 18.2.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -1262,7 +1262,7 @@ packages:
   /@types/hoist-non-react-statics@3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 17.0.13
+      '@types/react': 18.2.0
       hoist-non-react-statics: 3.3.2
 
   /@types/js-levenshtein@1.1.3:
@@ -1279,30 +1279,24 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/prop-types@15.7.3:
-    resolution: {integrity: sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==}
+  /@types/prop-types@15.7.12:
+    resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
-  /@types/react-dom@17.0.8:
-    resolution: {integrity: sha512-0ohAiJAx1DAUEcY9UopnfwCE9sSMDGnY/oXjWMax6g3RpzmTt2GMyMVAXcbn0mo8XAff0SbQJl2/SBU+hjSZ1A==}
+  /@types/react-dom@18.2.0:
+    resolution: {integrity: sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==}
     dependencies:
-      '@types/react': 17.0.13
+      '@types/react': 18.2.0
     dev: true
 
-  /@types/react-dom@18.3.0:
-    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+  /@types/react@18.2.0:
+    resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
     dependencies:
-      '@types/react': 17.0.13
-    dev: true
+      '@types/prop-types': 15.7.12
+      '@types/scheduler': 0.23.0
+      csstype: 3.1.3
 
-  /@types/react@17.0.13:
-    resolution: {integrity: sha512-D/G3PiuqTfE3IMNjLn/DCp6umjVCSvtZTPdtAFy5+Ved6CsdRvivfKeCzw79W4AatShtU4nGqgvOv5Gro534vQ==}
-    dependencies:
-      '@types/prop-types': 15.7.3
-      '@types/scheduler': 0.16.1
-      csstype: 3.0.8
-
-  /@types/scheduler@0.16.1:
-    resolution: {integrity: sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==}
+  /@types/scheduler@0.23.0:
+    resolution: {integrity: sha512-YIoDCTH3Af6XM5VuwGG/QL/CJqga1Zm3NkU3HZ4ZHK2fRMPYP1VczsTUqtsf43PH/iJNVlPHAo2oWX7BSdB2Hw==}
 
   /@types/set-cookie-parser@2.4.7:
     resolution: {integrity: sha512-+ge/loa0oTozxip6zmhRIk8Z/boU51wl9Q6QdLZcokIGMzY5lFXYy/x7Htj2HTC6/KZP1hUbZ1ekx8DYXICvWg==}
@@ -1314,7 +1308,7 @@ packages:
     resolution: {integrity: sha512-mmiVvwpYklFIv9E8qfxuPyIt/OuyIrn6gMOAMOFUO3WJfSrSE+sGUoa4PiZj77Ut7bKZpaa6o1fBKS/4TOEvnA==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 17.0.13
+      '@types/react': 18.2.0
       csstype: 3.0.8
     dev: true
 
@@ -1900,6 +1894,10 @@ packages:
 
   /csstype@3.0.8:
     resolution: {integrity: sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==}
+    dev: true
+
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   /cz-conventional-changelog@3.3.0(@types/node@20.13.0)(typescript@5.4.5):
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}

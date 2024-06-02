@@ -18,14 +18,14 @@ const Header: FC = () => (
     <Container>
       <HeaderWrapper>
         <Link href="/" passHref>
-          <a><Title className="tittle">SHOP</Title></a>
+          <Title className="tittle">SHOP</Title>
         </Link>
         
         <NavigationButton>
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <LinkText>Home</LinkText>
           </Link>
-          <Link href="/record" passHref>
+          <Link href="/record" passHref legacyBehavior>
             <LinkText>Record</LinkText>
           </Link>
           <ToggleThemeButton />

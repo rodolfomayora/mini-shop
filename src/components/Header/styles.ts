@@ -46,7 +46,7 @@ export const NavigationButton = styled.nav`
   }
 `;
 
-export const LinkText = styled.a`
+export const LinkText = styled.span`
   color: ${colors.white};
   cursor: pointer;
 `;
