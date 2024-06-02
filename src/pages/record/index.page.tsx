@@ -1,6 +1,5 @@
-import React, { FC, ReactNode } from 'react';
-
-import { Layout } from '../../components';
+import type { ReactNode } from 'react';
+import { Layout } from '#components/Layout';
 import { useRecord } from '../../context';
 import {
   MainTitle,
@@ -11,7 +10,7 @@ import {
   StyledRecordItem
 } from './styles';
 
-const Record: FC = () => {
+function Record () {
 
   const recordContext = useRecord();
   const { recordState } = recordContext;
@@ -43,7 +42,7 @@ const Record: FC = () => {
   }
 
   return (
-    <Layout pageTitle="Shoping Record">
+    <Layout pageTitle="Shopping Record">
       <MainTitle>Shopping Record</MainTitle>
 
       <RecordList>

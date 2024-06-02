@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-
 import useCheckout from './useCheckout';
-import { CartSummaryItem, Layout, PaymentForm } from '../../components';
+import { CartSummaryItem, PaymentForm } from '../../components';
+import { Layout } from '#components/Layout';
 import {
   CartSummaryList,
   CheckoutContent,
@@ -12,10 +11,16 @@ import {
   TotalPriceLabel,
 } from './styles';
 
-const Checkout: FC = () => {
+function Checkout () {
 
   const { allCartItemsId, buyProducts, subTotal } = useCheckout();
-
+  const cartItemsToRender = allCartItemsId.map((cartItemId) => (
+    <li key={cartItemId}>
+      <CartSummaryItem cartItemId={cartItemId}/>
+    </li>
+  ));
+  const totalPrice = `Total: $${subTotal}`;
+  
   return (
     <Layout pageTitle="Checkout">
       <MainTitle>Check Out</MainTitle>
@@ -24,14 +29,12 @@ const Checkout: FC = () => {
         <SummarySection>
           <SubTitle>Cart Summary</SubTitle>
           <CartSummaryList>
-          {allCartItemsId.map((cartItemId) => (
-            <li key={cartItemId}>
-              <CartSummaryItem cartItemId={cartItemId}/>
-            </li>
-          ))}
+            {cartItemsToRender}
           </CartSummaryList>
 
-          <TotalPriceLabel>{`Total: $${subTotal}`}</TotalPriceLabel>
+          <TotalPriceLabel>
+            {totalPrice}
+          </TotalPriceLabel>
         </SummarySection>
 
         <FormSection>

@@ -22,7 +22,8 @@ export const DetailLayout = styled.div`
 export const ImageContainer = styled.div`
   margin-bottom: 40px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
+  background-color: white;
 
   @media screen and (min-width: ${breakpoints.medium}) {
     flex-basis: 50%;

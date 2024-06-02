@@ -44,8 +44,8 @@ function Home () {
   );
 
   return (
-    <Layout pageTitle='Home'>
-      <h1 className="mb-[40px] text-center text-[var(--color-black-2)]">
+    <Layout pageTitle="Home">
+      <h1 className="mt-0 mb-[40px] text-center text-[var(--color-black-2)]">
         Products
       </h1>
       {renderContent}

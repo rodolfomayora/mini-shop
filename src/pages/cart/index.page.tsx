@@ -1,12 +1,9 @@
-import React, { FC, ReactNode } from 'react';
-
+import type { ReactNode } from 'react';
 import { useRouter } from 'next/router';
-import { useCart } from '../../context';
-import {
-  CartItem,
-  Layout,
-} from '../../components';
+import { CartItem } from '#components/CartItem';
+import { Layout } from '#components/Layout';
 import { Button } from '#components/Button';
+import { useCart } from '../../context';
 import {
   MainTitle,
   CartContent,
@@ -16,7 +13,7 @@ import {
   TotalPriceLabel,
 } from './styles';
 
-const Cart: FC = () => {
+function Cart () {
 
   const cartContext = useCart();
   const { cartState } = cartContext;
@@ -42,7 +39,7 @@ const Cart: FC = () => {
   );
 
   return (
-    <Layout pageTitle={'Cart'}>
+    <Layout pageTitle="Cart">
       <MainTitle>CART</MainTitle>
 
       <CartContent>

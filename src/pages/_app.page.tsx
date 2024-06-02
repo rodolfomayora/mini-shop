@@ -5,7 +5,6 @@ import {
   RecordProvider,
   ThemeContextProvider,
 } from '../context';
-// import { SplashScreen } from '../components';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
 import GlobalStyles from '../styles/GlobalStyles';
 import '../styles2/globals.css';
@@ -22,7 +21,6 @@ const App = ({ Component, pageProps }: AppProps) => (
         <RecordProvider>
           <ThemeContextProvider>
             <GlobalStyles />
-            {/* {process.env.NODE_ENV === 'production' && <SplashScreen />} */}
             <Component {...pageProps} />
           </ThemeContextProvider>
         </RecordProvider>
