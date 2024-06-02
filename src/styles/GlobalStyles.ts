@@ -16,7 +16,6 @@ export default createGlobalStyle<{ theme: Theme }>`
     *:before,
     *:after {
       box-sizing: border-box;
-      margin: 0;
       -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
     }
   }
@@ -36,17 +35,6 @@ export default createGlobalStyle<{ theme: Theme }>`
     ${({ theme }) => theme.dark && css`
       background-color: ${colors.dark.black};
     `}
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    color: ${colors.black2};
   }
 
   a { text-decoration: none; }

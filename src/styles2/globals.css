@@ -134,7 +134,6 @@
 
   a {
     cursor: pointer;
-    line-height: 0;
   }
 
   abbr[title] { text-decoration: none; }
