@@ -3,11 +3,12 @@ import {
   ProductProvider,
   CartProvider,
   RecordProvider,
-  ThemeContextProvider
+  ThemeContextProvider,
 } from '../context';
 // import { SplashScreen } from '../components';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
 import GlobalStyles from '../styles/GlobalStyles';
+import '../styles2/globals.css';
 
 // import('../../__mocks__').then(({ serverMSW }) => {
 //   serverMSW();
