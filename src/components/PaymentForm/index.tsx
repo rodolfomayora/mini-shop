@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Formik, FormikProps, FormikValues } from 'formik';
 import * as Yup from 'yup';
 
-import MainButton from '../MainButton';
+import { Button } from '#components/Button';
 import {
   ButtonWrapper,
   ErrorMessage,
@@ -161,14 +161,13 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
         </div>
 
         <ButtonWrapper>
-          <MainButton
-            type="button"
-            onClickAction={handleSubmit}
+          <Button className="w-full"
+            onClick={handleSubmit}
             // enable only if previous field is valid
             disabled={!values.address || !!errors.address}
           >
             PAY
-          </MainButton>
+          </Button>
         </ButtonWrapper>
       </StyledPaymentForm>
     )}

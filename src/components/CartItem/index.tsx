@@ -105,5 +105,3 @@ export function CartItem ({ cartItemId }: Props) {
     onClickRedirect,
   ]);
 }
-
-export default CartItem; 
