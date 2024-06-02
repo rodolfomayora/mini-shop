@@ -42,13 +42,9 @@ const Home: FC = () => {
       {productsToRender}
     </ProductGrid>
   ) : (
-    <div style={{
-      width: "100%",
-      height: "40svh",
-      display: "grid",
-      placeContent: "center",
-      fontWeight: 800,
-    }}>Loading...</div>
+    <div className="font-extrabold grid place-content-center w-full h-[40svh]">
+      Loading...
+    </div>
   );
 
   return (

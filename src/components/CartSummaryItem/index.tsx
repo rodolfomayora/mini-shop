@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
-
+import Image from 'next/image';
 import { useProduct, useCart } from '../../context';
-import ImageWrapper from '../ImageWrapper';
 import {
   ImageContainer,
   InfoContainer,
@@ -10,11 +8,11 @@ import {
   StyledCartSummaryItem,
 } from './styles';
 
-type CartSummaryItemProps = {
-  cartItemId: string
+type Props = {
+  cartItemId: string,
 }
 
-const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
+export function CartSummaryItem ({ cartItemId }: Props) {
 
   const productContext = useProduct();
   const { productState } = productContext;
@@ -31,7 +29,15 @@ const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
   return (
     <StyledCartSummaryItem>
       <ImageContainer>
-        <ImageWrapper productImage={product.image}/>
+        <Image className="
+            w-full aspect-square p-[16px]
+            object-contain object-center
+          "
+          src={product.image}
+          alt={product.name}
+          width={300}
+          height={300}
+        />
       </ImageContainer>
 
       <InfoContainer>

@@ -1,9 +1,8 @@
-import React, { FC, useCallback, useMemo } from 'react';
-
+import {  useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { useProduct, useCart } from '../../context';
-import { ImageWrapper } from '../../components';
 import {
   ActionButton,
   ButtonIcon,
@@ -15,17 +14,17 @@ import {
   StyledCartItem,
 } from './styles';
 
-type CartItemProps = {
-  cartItemId: string
+type Props = {
+  cartItemId: string,
 }
 
-const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
+export function CartItem ({ cartItemId }: Props) {
 
   const productContext = useProduct();
   const { productState } = productContext;
   const { productsById } = productState;
   const currentProduct = productsById[cartItemId];
-  const formatedPrice: string = currentProduct.price.toFixed(2);
+  const formatedPrice = currentProduct.price.toFixed(2);
 
   const cartContext = useCart();
   const { cartState, removeFromCart, addToCart, discountFromCart } = cartContext;
@@ -43,7 +42,15 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
   return useMemo(() => (
     <StyledCartItem>
       <ImageContainer>
-        <ImageWrapper productImage={currentProduct.image}/>
+        <Image className="
+            w-full aspect-square p-[16px]
+            object-contain object-center
+          "
+          src={currentProduct.image}
+          alt={currentProduct.name}
+          width={300}
+          height={300}
+        />
       </ImageContainer>
 
       <InfoContainer>
@@ -99,4 +106,4 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
   ]);
 }
 
-export default CartItem;
+export default CartItem; 

@@ -5,8 +5,8 @@ import { useCart } from '../../context';
 import {
   CartItem,
   Layout,
-  MainButton,
 } from '../../components';
+import { Button } from '#components/Button';
 import {
   MainTitle,
   CartContent,
@@ -55,12 +55,12 @@ const Cart: FC = () => {
             {`Total Price: $${subTotal}`}
           </TotalPriceLabel>
 
-          <MainButton
+          <Button className="w-full"
+            onClick={redirectToCheckout}
             disabled={isButtonEnable}
-            onClickAction={redirectToCheckout}
           >
             Go to Check out
-          </MainButton>
+          </Button>
         </CartSummary>
       </CartContent>
     </Layout>

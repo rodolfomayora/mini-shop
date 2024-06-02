@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
-
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { Button } from '#components/Button';
+import { ButtonOutlined } from '#components/ButtonOutlined';
+import { Layout } from '#components/Layout';
 
-import { ImageWrapper, MainButton, Layout } from '../../components';
 import { useProduct, useCart } from '../../context';
 import {
   Description,
@@ -12,7 +13,7 @@ import {
   Title,
 } from './styles';
 
-const Product: FC = () => {
+export function Product () {
 
   const router = useRouter();
   const { query, push: redirect } = router;
@@ -27,22 +28,30 @@ const Product: FC = () => {
   const cartContext = useCart();
   const { addToCart } = cartContext;
   const onClickAddToCart = () => addToCart(productId);
-  const onClickGoToCart = () => redirect('/Cart');
+  const onClickGoToCart = () => redirect('/cart');
 
   return (
     <Layout pageTitle="Product Detail">
       <Title>{product?.name ?? ''}</Title>
       <DetailLayout>
         <ImageContainer>
-          <ImageWrapper productImage={product?.image ?? ''}/>
+          <Image className="
+              w-full aspect-square p-[16px]
+              object-contain object-center
+            "
+            src={product?.image ?? ''}
+            alt={product?.name ?? ''}
+            width={300}
+            height={300}
+          />
         </ImageContainer>
 
         <InfoContainer>
           <Description>Description:{product?.description  ?? ''}</Description>
           <p>Available: {product?.quantity  ?? ''}</p>
           <p>{`Price: $${product?.price}`}</p>
-          <MainButton outline onClickAction={onClickGoToCart}>Go to cart</MainButton>
-          <MainButton onClickAction={onClickAddToCart}>Add to cart</MainButton>
+          <ButtonOutlined className="w-full" onClick={onClickGoToCart}>Go to cart</ButtonOutlined>
+          <Button className="w-full" onClick={onClickAddToCart}>Add to cart</Button>
         </InfoContainer>
       </DetailLayout>
     </Layout>
