@@ -4,6 +4,14 @@ import { ProductCard } from '#components/ProductCard';
 import { useCart, useProduct } from '../../context';
 import { ProductsById } from '../../models/productContext';
 
+/* dark theme backup: 
+export const MainTitle = styled.h1`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
+`;
+*/
+
 function Home () {
   
   const productContext = useProduct();
