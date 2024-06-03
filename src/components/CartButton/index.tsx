@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useCart } from '../../context';
+import { useCart } from '#context/cart';;
 
 /* dark theme backup: badge
   ${({ theme }) => theme.dark && css`
@@ -40,7 +40,7 @@ export function CartButton () {
         grid place-items-center
         text-[var(--color-white)] text-[12px] 
         rounded-full bg-[var(--color-black-3)]
-        min-w-[20px] aspect-square pr-[1px] pb-[1px]
+        min-w-[20px] aspect-square pb-[1px]
       ">
         {quantityToRender}
       </div>

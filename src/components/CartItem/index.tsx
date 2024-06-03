@@ -1,7 +1,8 @@
 import { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { useProduct, useCart } from '../../context';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
 import { ButtonAction } from './ButtonAction';
 
 type Props = {

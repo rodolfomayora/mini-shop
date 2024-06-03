@@ -1,4 +1,4 @@
-import { useThemeContext } from '../../context';
+import { useThemeContext } from '#context/theme';
 
 /* dark styles backup
   ${({ theme }) => theme.dark && css`
@@ -23,5 +23,6 @@ export function ToggleThemeButton () {
     "
     type="button"
     onClick={toggleTheme}
+    aria-lable="theme toggle button"
   />;
 }
