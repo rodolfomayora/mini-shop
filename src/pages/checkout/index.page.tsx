@@ -1,5 +1,6 @@
 import useCheckout from './useCheckout';
-import { CartSummaryItem, PaymentForm } from '../../components';
+import { PaymentForm } from '#components/PaymentForm';
+import { CartSummaryItem } from '#components/CartSummaryItem';
 import { Layout } from '#components/Layout';
 import {
   CartSummaryList,

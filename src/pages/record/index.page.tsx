@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
+import { useRecord } from '#context/record';
 import { Layout } from '#components/Layout';
-import { useRecord } from '../../context';
 import {
   MainTitle,
   RecordId,

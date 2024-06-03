@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
 import { Layout } from '#components/Layout';
 import { ProductCard } from '#components/ProductCard';
-import { useCart, useProduct } from '../../context';
 import { ProductsById } from '../../models/productContext';
 
 /* dark theme backup: 

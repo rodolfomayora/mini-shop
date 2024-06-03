@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
+
 import { useRouter } from 'next/router';
 import { Button } from '#components/Button';
 import { ButtonOutlined } from '#components/ButtonOutlined';
 import { Layout } from '#components/Layout';
 
-import { useProduct, useCart } from '../../context';
 import {
   Description,
   DetailLayout,
