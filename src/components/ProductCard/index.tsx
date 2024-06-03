@@ -12,6 +12,34 @@ type Props = {
   addToCart: (productId: string) => void,
 }
 
+/* dark theme backup
+
+export const StyledProductCard = styled.article`
+  ${({ theme }) => theme.dark && css`
+    box-shadow: ${colors.dark.shadow};
+    background-color: ${colors.dark.blue1};
+  `}
+`;
+
+export const AvailabilityTag = styled.div`
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.red};
+  `}
+`;
+
+export const ProductTitle = styled.h3`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
+`;
+
+export const ProductPrice = styled.p`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+  `}
+`;
+*/
+
 export function ProductCard ({
   productId,
   productImage,
@@ -59,8 +87,9 @@ export function ProductCard ({
         "
         src={productImage}
         alt={productName}
-        width={300}
-        height={300}
+        width="300"
+        height="300"
+        priority
       />
       <div className="grid grid-rows-[1fr] auto-rows-auto gap-y-[16px] p-[16px]">
         <h3 className="h-[46px] text-[20px] font-semibold line-clamp-2">
