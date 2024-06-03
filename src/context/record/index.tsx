@@ -1,4 +1,9 @@
-import { FC, createContext, useContext, useReducer } from 'react';
+import { 
+  createContext,
+  useContext,
+  useReducer,
+  type ReactNode
+} from 'react';
 
 type ShoppingRecord = {
   email: string,
@@ -25,6 +30,11 @@ type RecordContext =
 
 const RecordStateContext = createContext<RecordContext>(null);
 
+
+type Props = {
+  children: ReactNode,
+}
+
 const reducer: Reducer = (state, action) => {
   switch (action.type) {
 
@@ -39,7 +49,7 @@ const reducer: Reducer = (state, action) => {
   }
 }
 
-export const RecordProvider: FC = ({ children }) => {
+export const RecordProvider = ({ children }: Props) => {
 
   const initialState: RecordState = [];
   const [recordState, dispatch] = useReducer(reducer, initialState);

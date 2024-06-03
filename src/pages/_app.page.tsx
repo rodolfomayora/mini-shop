@@ -1,11 +1,10 @@
 import { AppProps } from 'next/app';
-import {
-  ProductProvider,
-  CartProvider,
-  RecordProvider,
-  ThemeContextProvider,
-} from '../context';
+import { ProductProvider } from '#context/product';
+import { CartProvider } from '#context/cart';
+import { RecordProvider } from '#context/record';
+import { ThemeContextProvider } from '#context/theme';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
+
 import GlobalStyles from '../styles/GlobalStyles';
 import '../styles2/globals.css';
 

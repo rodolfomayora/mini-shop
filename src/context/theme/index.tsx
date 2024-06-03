@@ -1,13 +1,12 @@
-import React, {
-  FC,
+import {
   createContext,
   useContext,
   useEffect,
   useState,
+  type ReactNode,
 } from 'react';
 
-import { ThemeProvider } from 'styled-components'
-
+import { ThemeProvider } from 'styled-components';
 
 type Theme = {
   dark: boolean
@@ -18,7 +17,12 @@ type ThemeContext = { theme: Theme, setTheme: SetTheme } | undefined;
 
 const themeContext = createContext<ThemeContext>(undefined);
 
-export const ThemeContextProvider: FC = ({ children }) => {
+
+type Props = {
+  children: ReactNode,
+}
+
+export const ThemeContextProvider= ({ children }: Props) => {
 
   const initialState: Theme = {
     dark: false
@@ -54,7 +58,7 @@ export const ThemeContextProvider: FC = ({ children }) => {
   [theme])
 
   const providerValue: ThemeContext = { theme, setTheme };
- 
+
   return (
     <themeContext.Provider value={providerValue}>
       <ThemeProvider theme={theme}>
