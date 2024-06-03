@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
-import { StyledContainer } from './styles';
 
 export function Container ({ children }: { children: ReactNode }) {
   return (
-    <StyledContainer>
+    <div className="
+      box-content mx-auto px-[24px] max-w-[1240px]
+      md:px-[48px]
+    ">
       {children}
-    </StyledContainer>
+    </div>
   );
 }
