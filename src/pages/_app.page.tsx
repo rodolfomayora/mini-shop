@@ -4,9 +4,7 @@ import { CartProvider } from '#context/cart';
 import { RecordProvider } from '#context/record';
 import { ThemeContextProvider } from '#context/theme';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
-
-import GlobalStyles from '../styles/GlobalStyles';
-import '../styles2/globals.css';
+import '../styles/global.css';
 
 // import('../../__mocks__').then(({ serverMSW }) => {
 //   serverMSW();
@@ -19,7 +17,6 @@ const App = ({ Component, pageProps }: AppProps) => (
       <CartProvider>
         <RecordProvider>
           <ThemeContextProvider>
-            <GlobalStyles />
             <Component {...pageProps} />
           </ThemeContextProvider>
         </RecordProvider>

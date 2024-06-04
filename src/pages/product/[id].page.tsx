@@ -4,6 +4,7 @@ import { useProduct } from '#context/product';
 import { useCart } from '#context/cart';
 import { Button } from '#components/Button';
 import { ButtonOutlined } from '#components/ButtonOutlined';
+import { MainTitle } from '#components/MainTitle';
 import { Layout } from '#components/Layout';
 
 export function Product () {
@@ -25,9 +26,7 @@ export function Product () {
 
   return (
     <Layout pageTitle="Product Detail">
-      <h1 className="mt-0 mb-[40px] text-left text-[36px] text-[var(--color-black-2)]">
-        {product?.name ?? ''}
-      </h1>
+      <MainTitle>{product?.name ?? ''}</MainTitle>
       <div className="
         grid grid-cols-1 items-start gap-[40px]
         md:grid-cols-2 

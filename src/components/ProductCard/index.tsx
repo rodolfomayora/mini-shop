@@ -95,20 +95,18 @@ export function ProductCard ({
         <h3 className="
           h-[46px] text-[20px] font-semibold line-clamp-2
           transition-colors duration-400 ease-linear
-          group-hover:text-[var(--color-marine-blue)]  
+          group-hover:text-[var(--color-marine-blue)]
         ">
           {productName}
         </h3>
         <p className="font-extrabold">{formatedPrice}</p>
-        <ButtonOutlined className="w-full
-          group-hover:text-[var(--color-white)]
-          group-hover:bg-[var(--color-black-3)]
-          group-hover:border-[var(--color-black-3)]
+        <ButtonOutlined className="w-full" onClick={handleAddToCart}>
+          Add to cart
+        </ButtonOutlined>
+        <Button className="w-full
+          group-hover:bg-[var(--color-marine-blue)] 
         ">
           View Detail
-        </ButtonOutlined>
-        <Button className="w-full" onClick={handleAddToCart}>
-          Add to cart
         </Button>
       </div>
     </div>

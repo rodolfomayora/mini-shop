@@ -3,6 +3,7 @@ import { useProduct } from '#context/product';
 import { useCart } from '#context/cart';
 import { Layout } from '#components/Layout';
 import { ProductCard } from '#components/ProductCard';
+import { MainTitle } from '#components/MainTitle';
 import { ProductsById } from '../../models/productContext';
 
 /* dark theme backup: 
@@ -54,9 +55,7 @@ function Home () {
 
   return (
     <Layout pageTitle="Home">
-      <h1 className="mt-0 mb-[40px] text-center text-[var(--color-black-2)]">
-        Products
-      </h1>
+      <MainTitle className="text-center">Products</MainTitle>
       {renderContent}
     </Layout>
   );

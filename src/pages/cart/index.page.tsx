@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { CartItem } from '#components/CartItem';
 import { Layout } from '#components/Layout';
 import { Button } from '#components/Button';
+import { MainTitle } from '#components/MainTitle';
 import { useCart } from '#context/cart';
 
 function Cart () {
@@ -32,9 +33,7 @@ function Cart () {
 
   return (
     <Layout pageTitle="Cart">
-      <h1 className="mt-0 mb-[40px] text-left text-[var(--color-black-2)]">
-        CART
-      </h1>
+      <MainTitle>CART</MainTitle>
 
       <div className="grid gap-y-[40px]">
         <ul className="grid gap-y-[20px]">

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useRecord } from '#context/record';
+import { MainTitle } from '#components/MainTitle';
 import { Layout } from '#components/Layout';
 
 function Record () {
@@ -53,9 +54,7 @@ function Record () {
 
   return (
     <Layout pageTitle="Shopping Record">
-      <h1 className="mt-0 mb-[40px] text-left text-[36px] text-[var(--color-black-2)]">
-        Shopping Record
-      </h1>
+      <MainTitle>Shopping Record</MainTitle>
       {recordToRender}
     </Layout>
   );
