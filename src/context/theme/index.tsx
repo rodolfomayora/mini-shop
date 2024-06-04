@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 
-import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from 'styled-components';
 
 type Theme = {
   dark: boolean
@@ -61,9 +61,9 @@ export const ThemeContextProvider= ({ children }: Props) => {
 
   return (
     <themeContext.Provider value={providerValue}>
-      <ThemeProvider theme={theme}>
+      {/* <ThemeProvider theme={theme}> */}
         {children}
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </themeContext.Provider>
   );
 }

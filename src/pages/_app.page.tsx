@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import { ProductProvider } from '#context/product';
 import { CartProvider } from '#context/cart';
 import { RecordProvider } from '#context/record';
-import { ThemeContextProvider } from '#context/theme';
+// import { ThemeContextProvider } from '#context/theme';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
 import '../styles/global.css';
 
@@ -16,9 +16,9 @@ const App = ({ Component, pageProps }: AppProps) => (
     <ProductProvider>
       <CartProvider>
         <RecordProvider>
-          <ThemeContextProvider>
+          {/* <ThemeContextProvider> */}
             <Component {...pageProps} />
-          </ThemeContextProvider>
+          {/* </ThemeContextProvider> */}
         </RecordProvider>
       </CartProvider>
     </ProductProvider>
