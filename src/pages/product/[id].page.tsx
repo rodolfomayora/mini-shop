@@ -1,19 +1,10 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useProduct } from '#context/product';
 import { useCart } from '#context/cart';
-
-import { useRouter } from 'next/router';
 import { Button } from '#components/Button';
 import { ButtonOutlined } from '#components/ButtonOutlined';
 import { Layout } from '#components/Layout';
-
-import {
-  Description,
-  DetailLayout,
-  ImageContainer,
-  InfoContainer,
-  Title,
-} from './styles';
 
 export function Product () {
 
@@ -34,28 +25,35 @@ export function Product () {
 
   return (
     <Layout pageTitle="Product Detail">
-      <Title>{product?.name ?? ''}</Title>
-      <DetailLayout>
-        <ImageContainer>
-          <Image className="
-              w-full aspect-square p-[16px]
-              object-contain object-center
-            "
-            src={product?.image ?? ''}
-            alt={product?.name ?? ''}
-            width={300}
-            height={300}
-          />
-        </ImageContainer>
+      <h1 className="mt-0 mb-[40px] text-left text-[36px] text-[var(--color-black-2)]">
+        {product?.name ?? ''}
+      </h1>
+      <div className="
+        grid grid-cols-1 items-start gap-[40px]
+        md:grid-cols-2 
+      ">
+        <Image className="
+            w-full aspect-square p-[16px]
+            object-contain object-center
+            bg-[var(--color-white-2)] rounded-[6px]
+            shadow-[0_0_5px_0px_#b1b9d8]
+          "
+          src={product?.image ?? ''}
+          alt={product?.name ?? ''}
+          width="300"
+          height="300"
+        />
 
-        <InfoContainer>
-          <Description>Description:{product?.description  ?? ''}</Description>
+        <div className="grid gap-y-[20px] content-start">
+          <p className="leading-[26px] [word-spacing:4px]">
+            Description:{product?.description  ?? ''}
+          </p>
           <p>Available: {product?.quantity  ?? ''}</p>
           <p>{`Price: $${product?.price}`}</p>
           <ButtonOutlined className="w-full" onClick={onClickGoToCart}>Go to cart</ButtonOutlined>
           <Button className="w-full" onClick={onClickAddToCart}>Add to cart</Button>
-        </InfoContainer>
-      </DetailLayout>
+        </div>
+      </div>
     </Layout>
   );
 }

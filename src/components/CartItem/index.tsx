@@ -54,7 +54,8 @@ export function CartItem ({ cartItemId }: Props) {
     <article className="
       grid gap-[20px]
       p-[20px] rounded-[6px]
-      bg-[var(--color-white-2)] shadow-[0_1px_5px_3px_#b1b9d8]
+      bg-[var(--color-white-2)]
+      shadow-[0_1px_5px_3px_#b1b9d8]
       md:grid-cols-[180px_1fr]
     ">
       <Image className="

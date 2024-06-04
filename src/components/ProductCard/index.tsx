@@ -74,7 +74,7 @@ export function ProductCard ({
     ) : null 
 
   return (
-    <div className="
+    <div className="group
         relative rounded-[6px] shadow-[0_1px_5px_3px_#b1b9d8]
         bg-[var(--color-white-2)] overflow-hidden cursor-pointer
       "
@@ -91,12 +91,22 @@ export function ProductCard ({
         height="300"
         priority
       />
-      <div className="grid grid-rows-[1fr] auto-rows-auto gap-y-[16px] p-[16px]">
-        <h3 className="h-[46px] text-[20px] font-semibold line-clamp-2">
+      <div className=" grid grid-rows-[1fr] auto-rows-auto gap-y-[16px] p-[16px]">
+        <h3 className="
+          h-[46px] text-[20px] font-semibold line-clamp-2
+          transition-colors duration-400 ease-linear
+          group-hover:text-[var(--color-marine-blue)]  
+        ">
           {productName}
         </h3>
         <p className="font-extrabold">{formatedPrice}</p>
-        <ButtonOutlined className="w-full">View Detail</ButtonOutlined>
+        <ButtonOutlined className="w-full
+          group-hover:text-[var(--color-white)]
+          group-hover:bg-[var(--color-black-3)]
+          group-hover:border-[var(--color-black-3)]
+        ">
+          View Detail
+        </ButtonOutlined>
         <Button className="w-full" onClick={handleAddToCart}>
           Add to cart
         </Button>

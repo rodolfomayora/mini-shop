@@ -1,0 +1,157 @@
+/* @layer base, components, utilities; */
+@layer defaults, components, utilities;
+
+@layer defaults.tailwind {
+  @tailwind base;
+}
+
+@layer components.tailwind {
+  @tailwind components;
+}
+
+@layer utilities.tailwind {
+  @tailwind utilities;
+}
+
+@layer defaults.typography {
+  /* LATO */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src:
+      url('/fonts/Lato/lato-v17-latin-regular.woff') format('woff'),
+      url('/fonts/Lato/lato-v17-latin-regular.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src:
+      url('/fonts/Lato/lato-v17-latin-700.woff') format('woff'),
+      url('/fonts/Lato/lato-v17-latin-700.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src:
+      url('/fonts/Lato/lato-v17-latin-900.woff') format('woff'),
+      url('/fonts/Lato/lato-v17-latin-900.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  /* Montserrat */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src:
+      url('/fonts/Montserrat/montserrat-v15-latin-regular.woff') format('woff'),
+      url('/fonts/Montserrat/montserrat-v15-latin-regular.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src:
+      url('/fonts/Montserrat/montserrat-v15-latin-600.woff') format('woff'),
+      url('/fonts/Montserrat/montserrat-v15-latin-600.ttf') format('truetype');
+    font-display: swap;
+  }
+
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    src:
+      url('/fonts/Montserrat/montserrat-v15-latin-800.woff') format('woff'),
+      url('/fonts/Montserrat/montserrat-v15-latin-800.ttf') format('truetype');
+    font-display: swap;
+  }
+}
+
+@layer defaults.variables {
+  :root {
+    --color-white      : #f5f6fa;
+    --color-white-2    : #ffffff;
+    --color-black-1    : #2f3640;
+    --color-black-2    : #353b48;
+    --color-black-3    : #111111;
+    --color-gray       : #818181;
+    --color-green      : #00ff68;
+    --color-marine-blue: #273c75;
+    --color-red        : #ff0000;
+    --color-sky-blue   : #5d83ea;
+    --color-yellow     : #ffc107;
+
+    --shadow : 0 1px 5px 3px #b1b9d8;
+    --shadow2: 0 1px 5px 3px #474747;
+
+    --font-montserrat: 'Montserrat';
+    --font-lato      : 'Lato';
+
+    --min-mobile-with: 375px;
+  }
+}
+
+@layer defaults.base {
+  *:focus-visible {
+    outline: solid #111111 4px;
+  }
+
+  html {
+    font-family: var(--font-lato), Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    
+    color: var(--color-black-2);
+  }
+
+  body {
+    min-height: 100svh;
+    min-width: var(--min-mobile-width);
+    background-color: var(--color-white)
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    color: var(--color-black-2);
+  }
+  
+  img {
+    all: revert;
+    max-inline-size: 100%; /* max-width: 100% */
+    block-size: auto;      /* height: auto */
+  }
+
+  a {
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  abbr[title] { text-decoration: none; }
+
+  button, label, img, a {
+    user-select: none;
+  }
+
+  @supports (text-wrap:pretty) {
+    html {
+      text-wrap: pretty;
+    }
+  }
+
+  @supports (text-wrap:balance) {
+    h1, h2, h3, h4, h5, h6 {
+      text-wrap: balance;
+    }
+  }
+}
