@@ -1,6 +1,7 @@
 import { Formik, FormikProps, FormikValues } from 'formik';
 import * as Yup from 'yup';
 import { Button } from '#components/Button';
+import { InputText } from '#components/InputText';
 
 type Props = {
   onClickSubmitAction: (values: any) => void
@@ -53,18 +54,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
         <div>
           <label>
             <span className="block leading-[28px] cursor-pointer">Email:</span>
-            <input className="inline-block
-                w-full leading-[32px] px-[12px]
-                text-[--color-black-1] rounded-[6px]
-                border-solid border-[1px] border-[--color-black-1]
-                bg-[--color-white-2] overflow-hidden
-                outline-none
-
-                disabled:cursor-not-allowed
-                disabled:bg-[--color-gray]
-                disabled:opacity-50
-              "
-              name="email"
+            <InputText name="email"
               type="email"
               value={values.email}
               onBlur={handleBlur}
@@ -82,18 +72,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
         <div>
           <label>
             <span className="block leading-[28px] cursor-pointer">Name:</span>
-            <input className="inline-block
-                w-full leading-[32px] px-[12px]
-                text-[--color-black-1] rounded-[6px]
-                border-solid border-[1px] border-[--color-black-1]
-                bg-[--color-white-2] overflow-hidden
-                outline-none
-
-                disabled:cursor-not-allowed
-                disabled:bg-[--color-gray]
-                disabled:opacity-50
-              "
-              name="name"
+            <InputText name="name"
               type="text"
               value={values.name}
               onChange={handleChange}
@@ -113,18 +92,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
         <div>
           <label>
             <span className="block leading-[28px] cursor-pointer">Lastname:</span>
-            <input className="inline-block
-                w-full leading-[32px] px-[12px]
-                text-[--color-black-1] rounded-[6px]
-                border-solid border-[1px] border-[--color-black-1]
-                bg-[--color-white-2] overflow-hidden
-                outline-none
-
-                disabled:cursor-not-allowed
-                disabled:bg-[--color-gray]
-                disabled:opacity-50
-              "
-              name="lastname"
+            <InputText name="lastname"
               type="text"
               value={values.lastname}
               onChange={handleChange}
