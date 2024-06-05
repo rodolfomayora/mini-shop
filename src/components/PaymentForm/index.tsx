@@ -1,26 +1,13 @@
-import React, { FC } from 'react';
-
 import { Formik, FormikProps, FormikValues } from 'formik';
 import * as Yup from 'yup';
+import { Button } from '#components/Button';
+import { InputText } from '#components/InputText';
 
-import MainButton from '../MainButton';
-import {
-  ButtonWrapper,
-  ErrorMessage,
-  FormInput,
-  FormLabel,
-  FormTextArea,
-  RadioOptions,
-  StyledPaymentForm,
-} from './styles';
-
-type PaymentFormProps = {
+type Props = {
   onClickSubmitAction: (values: any) => void
 }
 
-const PaymentForm: FC<PaymentFormProps> = (props) => {
-
-  const { onClickSubmitAction } = props;
+export function PaymentForm ({ onClickSubmitAction }: Props) {
 
   const formSchema: any = Yup.object().shape({
     email: Yup.string()
@@ -32,7 +19,7 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
       .required('Required'),
     address: Yup.string()
       .required('Required'),
-  })
+  });
 
   const paymentMethod: object = {
     '0': 'Credit Card',
@@ -61,80 +48,99 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
       handleBlur,
       handleSubmit
     }: FormikProps<FormikValues>) => (
-      <StyledPaymentForm autoComplete="off">
+      <form className="grid gap-y-[14px]"
+        autoComplete="off"
+      >
         <div>
-          <FormLabel htmlFor="email">Email:</FormLabel>
-          <FormInput id="email"
-            name="email"
-            type="email"
-            value={values.email}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            isNoValid={touched.email && !!errors.email}
-            isValid={!!values.email && !errors.email}
-          />
+          <label>
+            <span className="block leading-[28px] cursor-pointer">Email:</span>
+            <InputText name="email"
+              type="email"
+              value={values.email}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              // isNoValid={touched.email && !!errors.email}
+              // isValid={!!values.email && !errors.email}
+            />
+          </label>
+          
           {touched.email
           && errors.email
-          && <ErrorMessage>{errors.email}</ErrorMessage>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.email}`}</p>}
         </div>
 
         <div>
-          <FormLabel htmlFor="name">Name:</FormLabel>
-          <FormInput id="name"
-            name="name"
-            type="text"
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            isNoValid={touched.name && !!errors.name}
-            isValid={!!values.name && !errors.name}
-            // enable only if previous field is valid
-            disabled={!values.email || !!errors.email}
-          />
+          <label>
+            <span className="block leading-[28px] cursor-pointer">Name:</span>
+            <InputText name="name"
+              type="text"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              // isNoValid={touched.name && !!errors.name}
+              // isValid={!!values.name && !errors.name}
+              // enable only if previous field is valid
+              disabled={!values.email || !!errors.email}
+            />
+          </label>
+          
           {touched.name
           && errors.name
-          && <ErrorMessage>{errors.name}</ErrorMessage>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.name}`}</p>}
         </div>
 
         <div>
-          <FormLabel htmlFor="lastname">Lastname:</FormLabel>
-          <FormInput id="lastname"
-            name="lastname"
-            type="text"
-            value={values.lastname}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            isNoValid={touched.lastname && !!errors.lastname}
-            isValid={!!values.lastname && !errors.lastname}
-            // enable only if previous field is valid
-            disabled={!values.name || !!errors.name}
-          />
+          <label>
+            <span className="block leading-[28px] cursor-pointer">Lastname:</span>
+            <InputText name="lastname"
+              type="text"
+              value={values.lastname}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              // isNoValid={touched.lastname && !!errors.lastname}
+              // isValid={!!values.lastname && !errors.lastname}
+              // enable only if previous field is valid
+              disabled={!values.name || !!errors.name}
+            />
+          </label>
           {touched.lastname
           && errors.lastname
-          && <ErrorMessage>{errors.lastname}</ErrorMessage>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.lastname}`}</p>}
         </div>
 
         <div>
-          <FormLabel htmlFor="address">Address:</FormLabel>
-          <FormTextArea id="address"
-            name="address"
-            value={values.address}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            isNoValid={touched.address && !!errors.address}
-            isValid={!!values.address && !errors.address}
-            // enable only if previous field is valid
-            disabled={!values.lastname || !!errors.lastname}
-          />
+          <label>
+            <span className="block leading-[28px] cursor-pointer">Address:</span>
+            <textarea className="inline-block
+                min-w-full max-w-full leading-[32px] px-[12px]
+                text-[--color-black-1] rounded-[6px]
+                border-solid border-[1px] border-[--color-black-1]
+                bg-[--color-white-2] overflow-hidden
+                outline-none
+
+                disabled:cursor-not-allowed
+                disabled:bg-[--color-gray]
+                disabled:opacity-50
+              "
+              name="address"
+              value={values.address}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              // isNoValid={touched.address && !!errors.address}
+              // isValid={!!values.address && !errors.address}
+              // enable only if previous field is valid
+              disabled={!values.lastname || !!errors.lastname}
+            />
+          </label>
           {touched.address
           && errors.address
-          && <ErrorMessage>{errors.address}</ErrorMessage>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.address}`}</p>}
         </div>
 
         <div>
-          <FormLabel>Payment Method:</FormLabel>
-          <RadioOptions>
-            <FormLabel>
+          <label className="block leading-[28px]">Payment Method:</label>
+          <div className="flex justify-start gap-x-[28px]">
+            <label className="leading-[28px]">
               <input name="paymentMethod"
                 type="radio"
                 value={paymentMethod[0]}
@@ -144,9 +150,9 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
                 disabled={!values.address || !!errors.address}
               />
               {` ${paymentMethod[0]}`}
-            </FormLabel>
+            </label>
 
-            <FormLabel>
+            <label className="leading-[28px]">
               <input name="paymentMethod"
                 type="radio"
                 value={paymentMethod[1]}
@@ -156,24 +162,20 @@ const PaymentForm: FC<PaymentFormProps> = (props) => {
                 disabled={!values.address || !!errors.address}
               />
               {` ${paymentMethod[1]}`}
-            </FormLabel>
-          </RadioOptions>
+
+            </label>
+          </div>
         </div>
 
-        <ButtonWrapper>
-          <MainButton
-            type="button"
-            onClickAction={handleSubmit}
-            // enable only if previous field is valid
-            disabled={!values.address || !!errors.address}
-          >
-            PAY
-          </MainButton>
-        </ButtonWrapper>
-      </StyledPaymentForm>
+        <Button className="w-full"
+          onClick={() => handleSubmit()}
+          // enable only if previous field is valid
+          disabled={!values.address || !!errors.address}
+        >
+          PAY
+        </Button>
+      </form>
     )}
     </Formik>
   );
 }
-
-export default PaymentForm;

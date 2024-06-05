@@ -1,19 +1,25 @@
-import React, { FC, ReactNode } from 'react';
-
-import { Layout, ProductCard } from '../../components';
-import { useCart, useProduct } from '../../context';
+import type { ReactNode } from 'react';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
+import { Layout } from '#components/Layout';
+import { ProductCard } from '#components/ProductCard';
+import { MainTitle } from '#components/MainTitle';
 import { ProductsById } from '../../models/productContext';
-import {
-  MainTitle,
-  ProductGrid
-} from './styles';
 
-const Home: FC = () => {
+/* dark theme backup: 
+export const MainTitle = styled.h1`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
+`;
+*/
+
+function Home () {
   
   const productContext = useProduct();
   const { productState } = productContext;
   const { allProductsId, productsById } = productState;
-  const areThereProducts: boolean = !!allProductsId.length;
+  const areThereProducts = !!allProductsId.length;
 
   const cartContext = useCart();
   const { addToCart } = cartContext;
@@ -38,23 +44,19 @@ const Home: FC = () => {
   const productsToRender = allProductsId.map(setProductCards(productsById));
 
   const renderContent = areThereProducts ? (
-    <ProductGrid>
+    <ul className="grid gap-[40px] grid-cols-[repeat(auto-fit,_minmax(245px,_1fr))]">
       {productsToRender}
-    </ProductGrid>
+    </ul>
   ) : (
-    <div style={{
-      width: "100%",
-      height: "40svh",
-      display: "grid",
-      placeContent: "center",
-      fontWeight: 800,
-    }}>Loading...</div>
+    <div className="font-extrabold grid place-content-center w-full h-[40svh]">
+      Loading...
+    </div>
   );
 
   return (
-    <Layout pageTitle='Home'>
-      <MainTitle>Products</MainTitle>
-        {renderContent}
+    <Layout pageTitle="Home">
+      <MainTitle className="text-center">Products</MainTitle>
+      {renderContent}
     </Layout>
   );
 }

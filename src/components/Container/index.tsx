@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
+import type { ReactNode } from 'react';
 
-import { StyledContainer } from './styles';
-
-const Container: FC = ({ children }) => (
-  <StyledContainer>
-    {children}
-  </StyledContainer>
-);
-
-export default Container;
+export function Container ({ children }: { children: ReactNode }) {
+  return (
+    <div className="
+      box-content mx-auto px-[24px] max-w-[1240px]
+      md:px-[48px]
+    ">
+      {children}
+    </div>
+  );
+}

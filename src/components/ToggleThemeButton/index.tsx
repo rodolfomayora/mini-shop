@@ -1,13 +1,28 @@
-import React, { FC } from 'react';
+import { useThemeContext } from '#context/theme';
 
-import { useThemeContext } from '../../context';
-import { ToggleThemeButtonStyled } from './styles';
+/* dark styles backup
+  ${({ theme }) => theme.dark && css`
+    box-shadow: ${colors.dark.shadow};
+    border-color: ${colors.dark.blue3};
+    background-color: ${colors.dark.blue2};
+    background-image: url('/images/svg/moon.svg');
+    background-size: 14px;
+  `}
+*/
 
-const ToggleThemeButton: FC = () => {
+export function ToggleThemeButton () {
 
   const { toggleTheme } = useThemeContext();
 
-  return <ToggleThemeButtonStyled onClick={toggleTheme} />;
+  return <input className="
+      flex justify-center w-8 h-8
+      rounded-full border-2 border-[--color-yellow]
+      cursor-pointer
+      bg-[url('/images/svg/sun.svg')] bg-center bg-[length:20px]
+      bg-no-repeat bg-[--color-white]
+    "
+    type="button"
+    onClick={toggleTheme}
+    aria-lable="theme toggle button"
+  />;
 }
-
-export default ToggleThemeButton;

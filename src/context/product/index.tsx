@@ -1,4 +1,10 @@
-import { FC, createContext, useContext, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  type ReactNode,
+} from 'react';
 
 import type { ProductsById } from '../../models/productContext';
 import { getProducts } from '#services/fakestoreapi';
@@ -75,7 +81,12 @@ const reducer = (state: ProductState, action: Action): ProductState => {
   }
 }
 
-export const ProductProvider: FC = ({ children }) => {
+
+type Props = {
+  children: ReactNode,
+}
+
+export const ProductProvider = ({ children }: Props) => {
 
   const initialState: ProductState = {
     productsById: {},

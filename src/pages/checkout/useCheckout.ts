@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
-
-import { useProduct, useCart, useRecord } from '../../context';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
+import { useRecord } from '#context/record';
 
 const useCheckout = () => {
 

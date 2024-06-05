@@ -1,20 +1,12 @@
-import React, { FC } from 'react';
+import Image from 'next/image';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
 
-import { useProduct, useCart } from '../../context';
-import ImageWrapper from '../ImageWrapper';
-import {
-  ImageContainer,
-  InfoContainer,
-  InfoLabel,
-  SubtotalPrice,
-  StyledCartSummaryItem,
-} from './styles';
-
-type CartSummaryItemProps = {
-  cartItemId: string
+type Props = {
+  cartItemId: string,
 }
 
-const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
+export function CartSummaryItem ({ cartItemId }: Props) {
 
   const productContext = useProduct();
   const { productState } = productContext;
@@ -29,17 +21,28 @@ const CartSummaryItem: FC<CartSummaryItemProps> = ({ cartItemId }) => {
   const subtotalPrice = (product.price * itemQuantityInCart).toFixed(2);
 
   return (
-    <StyledCartSummaryItem>
-      <ImageContainer>
-        <ImageWrapper productImage={product.image}/>
-      </ImageContainer>
-
-      <InfoContainer>
-        <InfoLabel>{`${itemQuantityInCart} x ${product.name}`}</InfoLabel>
-        <SubtotalPrice>{`Subtotal: $${subtotalPrice}`}</SubtotalPrice>
-      </InfoContainer>
-    </StyledCartSummaryItem>
+    <article className="
+      flex gap-x-[10px] p-[10px]
+      bg-[--color-white-2] rounded-[6px]
+      shadow-[0_0_4px_-1px_#b1b9d8]
+    ">
+      <Image className="
+          w-[50px] aspect-square p-[4px]
+          object-contain object-center
+        "
+        src={product.image}
+        alt={product.name}
+        width="50"
+        height="50"
+      />
+      <div className="grid gap-y-[10px]">
+        <p className="line-clamp-1 text-[16px]">
+          {`${itemQuantityInCart} x ${product.name}`}
+        </p>
+        <p className="font-semibold text-[16px]">
+          {`Subtotal: $${subtotalPrice}`}
+        </p>
+      </div>
+    </article>
   )
 }
-
-export default CartSummaryItem;

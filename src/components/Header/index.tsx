@@ -1,39 +1,55 @@
-import React, { FC, memo } from 'react';
-
 import Link from 'next/link';
+import { Container } from '#components/Container';
+import { CartButton } from '#components/CartButton';
+// import { ToggleThemeButton } from '#components/ToggleThemeButton';
 
-import Container from '../Container';
-import CartButton from '../CartButton';
-import ToggleThemeButton from '../ToggleThemeButton';
-import {
-  HeaderWrapper,
-  LinkText,
-  NavigationButton,
-  StyledHeader,
-  Title,
-} from './styles';
+/* dark styles backup: header
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.blue4};
+  `}
+*/
 
-const Header: FC = () => (
-  <StyledHeader>
-    <Container>
-      <HeaderWrapper>
-        <Link href="/" passHref>
-          <a><Title className="tittle">SHOP</Title></a>
-        </Link>
-        
-        <NavigationButton>
-          <Link href="/" passHref>
-            <LinkText>Home</LinkText>
+export function Header () {
+  return  (
+    <header className="sticky top-0 z-10 bg-[--color-marine-blue]">
+      <Container>
+        <nav className="
+          flex justify-between items-center
+          h-[60px] md:h-[70px] lg:h-[80px]
+        ">
+          <Link href="/">
+            <h2 className="cursor-pointer
+              text-[18px] uppercase
+              text-[--color-white]
+            ">
+              SHOP
+            </h2>
           </Link>
-          <Link href="/record" passHref>
-            <LinkText>Record</LinkText>
-          </Link>
-          <ToggleThemeButton />
-          <CartButton />
-        </NavigationButton>
-      </HeaderWrapper>
-    </Container>
-  </StyledHeader>
-);
-
-export default memo(Header);
+          
+          <div className="flex items-center gap-x-[16px] md:gap-x-[30px]">
+            <Link className="
+                text-[18px] capitalize
+                text-[--color-white]
+                cursor-pointer
+              "
+              href="/"
+            >
+              Home
+            </Link>
+            <Link className="
+                text-[18px] capitalize
+                text-[--color-white]
+                cursor-pointer
+              "
+              href="/record"
+            >
+              Record
+            </Link>
+            {/* <ToggleThemeButton /> */}
+            <CartButton />
+          </div>
+        </nav>
+      </Container>
+    </header>
+  );
+}

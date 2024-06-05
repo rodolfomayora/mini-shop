@@ -1,31 +1,41 @@
-import React, { FC, useCallback, useMemo } from 'react';
-
+import { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import { useProduct } from '#context/product';
+import { useCart } from '#context/cart';
+import { ButtonAction } from './ButtonAction';
 
-import { useProduct, useCart } from '../../context';
-import { ImageWrapper } from '../../components';
-import {
-  ActionButton,
-  ButtonIcon,
-  Counter,
-  CounterBlock,
-  InfoContainer,
-  ImageContainer,
-  ProducName,
-  StyledCartItem,
-} from './styles';
-
-type CartItemProps = {
-  cartItemId: string
+type Props = {
+  cartItemId: string,
 }
 
-const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
+/* dark theme backup:
+  CartItem:
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+    box-shadow: ${colors.dark.shadow};
+    background-color: ${colors.dark.blue1};
+  `}
+
+  ProducName:
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
+
+  ButtonAction:
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.blue2};
+    &:hover { background-color: ${colors.dark.blue5}; }
+  `}
+*/
+
+export function CartItem ({ cartItemId }: Props) {
 
   const productContext = useProduct();
   const { productState } = productContext;
   const { productsById } = productState;
   const currentProduct = productsById[cartItemId];
-  const formatedPrice: string = currentProduct.price.toFixed(2);
+  const formatedPrice = currentProduct.price.toFixed(2);
 
   const cartContext = useCart();
   const { cartState, removeFromCart, addToCart, discountFromCart } = cartContext;
@@ -41,49 +51,74 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
   [cartItemId, redirect]);
 
   return useMemo(() => (
-    <StyledCartItem>
-      <ImageContainer>
-        <ImageWrapper productImage={currentProduct.image}/>
-      </ImageContainer>
-
-      <InfoContainer>
-        <ProducName>{currentProduct.name}</ProducName>
-        <p>{`Price: $${formatedPrice}`}</p>
-        <p>{`Subtotal: $${subtotal}`}</p>
-
-        <CounterBlock>
-          <ActionButton onClick={() => removeFromCart(cartItemId)}>
-            <ButtonIcon
-              src={'/images/svg/cross.svg'}
-              alt={'cross'}
-              width="10px"
-              height="10px" />
-          </ActionButton>
-
-          <ActionButton wide onClick={onClickRedirect}>
-            Detail
-          </ActionButton>
-
-          <ActionButton onClick={() => discountFromCart(cartItemId)}>
-            <ButtonIcon
-              src={'/images/svg/minus.svg'}
-              alt={'minus'}
-              width="10px"
-              height="10px" />
-          </ActionButton>
-
-          <Counter>{productQuantityInCart}</Counter>
-
-          <ActionButton onClick={() => addToCart(cartItemId)}>
-            <ButtonIcon
-              src={'/images/svg/plus.svg'}
-              alt={'plus'}
-              width="10px"
-              height="10px" />
-          </ActionButton>
-        </CounterBlock>
-      </InfoContainer>
-    </StyledCartItem>
+    <article className="
+      grid gap-[20px]
+      p-[20px] rounded-[6px]
+      bg-[--color-white-2]
+      shadow-[0_1px_5px_3px_#b1b9d8]
+      md:grid-cols-[180px_1fr]
+    ">
+      <Image className="
+          w-full aspect-square
+          object-contain object-center
+        "
+        src={currentProduct.image}
+        alt={currentProduct.name}
+        width="300"
+        height="300"
+      />
+      <div className="grid gap-y-[10px] grid-rows-[1fr]">
+        <h3 className="h-[46px] text-[22px] font-bold line-clamp-2">
+          {currentProduct.name}
+        </h3>
+        <div className="inline-grid grid-cols-[auto_1fr] gap-[10px]">
+          <span>Price</span><span>{`: $${formatedPrice}`}</span>
+          <span>Subtotal</span><span>{`: $${subtotal}`}</span>
+        </div>
+        <menu className="flex items-center gap-x-[10px]">
+          <li>
+            <ButtonAction onClick={() => removeFromCart(cartItemId)}>
+              <Image className="object-cover object-center h-[16px]"
+                src="/images/svg/cross.svg"
+                alt="cross"
+                width="16"
+                height="16"
+              />
+            </ButtonAction>
+          </li>
+          <li className="w-full">
+            <ButtonAction className="w-full" onClick={onClickRedirect}>
+              Detail
+            </ButtonAction>
+          </li>
+          <li>
+            <ButtonAction onClick={() => discountFromCart(cartItemId)}>
+              <Image className="object-cover object-center h-[14px]"
+                src="/images/svg/minus.svg"
+                alt="minus"
+                width="14"
+                height="14"
+              />
+            </ButtonAction>
+          </li>
+          <li>
+            <span className="inline-block min-w-[40px] px-[8px] text-center text-[18px]">
+              {productQuantityInCart}
+            </span>
+          </li>
+          <li>
+            <ButtonAction onClick={() => addToCart(cartItemId)}>
+              <Image className="object-cover object-center h-[14px]"
+                src="/images/svg/plus.svg"
+                alt="plus"
+                width="14"
+                height="14"
+              />
+            </ButtonAction>
+          </li>
+        </menu>
+      </div>
+    </article>
   ),
   [
     cartItemId,
@@ -98,5 +133,3 @@ const CartItem: FC<CartItemProps> = ({ cartItemId }) => {
     onClickRedirect,
   ]);
 }
-
-export default CartItem;
