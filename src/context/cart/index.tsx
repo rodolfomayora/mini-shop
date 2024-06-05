@@ -1,10 +1,10 @@
 import {
-  FC,
   createContext,
   useCallback,
   useContext,
   useEffect,
-  useReducer
+  useReducer,
+  type ReactNode,
 } from 'react';
 import { useProduct } from "../product";
 
@@ -146,7 +146,11 @@ const reducer = (state: CartState, action: Action): CartState => {
   }
 }
 
-export const CartProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode,
+}
+
+export const CartProvider = ({ children }: Props) => {
   
   const initialState: CartState = {
     cartItemsById: {},

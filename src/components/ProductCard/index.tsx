@@ -1,30 +1,55 @@
-import React, { FC, memo } from 'react';
-
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { Button } from '#components/Button';
+import { ButtonOutlined } from '#components/ButtonOutlined';
 
-import { ImageWrapper, MainButton } from '../../components';
-import ProductCardProps from './types';
-import {
-  AvailabilityTag,
-  InfoWrapper,
-  ProductTitle,
-  ProductPrice,
-  StyledProductCard,
-} from './styles';
+type Props = {
+  productId: string,
+  productImage: string,
+  productName: string,
+  productQuantity: number,
+  productPrice: number,
+  addToCart: (productId: string) => void,
+}
 
-const ProductCard: FC<ProductCardProps> = props => {
+/* dark theme backup
 
-  const {
-    productId,
-    productImage,
-    productName,
-    productPrice,
-    productQuantity,
-    addToCart,
-  } = props;
+export const StyledProductCard = styled.article`
+  ${({ theme }) => theme.dark && css`
+    box-shadow: ${colors.dark.shadow};
+    background-color: ${colors.dark.blue1};
+  `}
+`;
 
-  const formatedPrice: string = productPrice.toFixed(2);
-  const areThereNotProductInStock: boolean = !productQuantity;
+export const AvailabilityTag = styled.div`
+  ${({ theme }) => theme.dark && css`
+    background-color: ${colors.dark.red};
+  `}
+`;
+
+export const ProductTitle = styled.h3`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.blue3};
+  `}
+`;
+
+export const ProductPrice = styled.p`
+  ${({ theme }) => theme.dark && css`
+    color: ${colors.dark.white};
+  `}
+`;
+*/
+
+export function ProductCard ({
+  productId,
+  productImage,
+  productName,
+  productPrice,
+  productQuantity,
+  addToCart,
+}: Props) {
+
+  const formatedPrice = `$${productPrice.toFixed(2)}`;
 
   const handleAddToCart = (event: React.MouseEvent<HTMLElement>): void => {
     event.stopPropagation();
@@ -35,22 +60,55 @@ const ProductCard: FC<ProductCardProps> = props => {
   const redirect = router.push;
   const onClickRedirect = () => redirect(`/product/${productId}`);
 
+  const areThereProductInStock = productQuantity === 0;
+  const renderAvailabilityTag = areThereProductInStock
+    ? (
+      <div className="
+        absolute z-10 top-0 left-0 w-full
+        leading-[40px] text-center font-semibold text-[--color-white]
+        bg-[--color-red]
+        opacity-90
+      ">
+        Not Available
+      </div>
+    ) : null 
+
   return (
-    <StyledProductCard onClick={onClickRedirect}>
-      {areThereNotProductInStock && (
-        <AvailabilityTag>No disponible</AvailabilityTag>
-      )}
-      <ImageWrapper productImage={productImage}/>
-      <InfoWrapper>
-        <ProductTitle>{productName}</ProductTitle>
-        <ProductPrice>{`$${formatedPrice}`}</ProductPrice>
-        <MainButton outline>View Detail</MainButton>
-        <MainButton onClickAction={handleAddToCart}>
+    <div className="group
+        relative rounded-[6px] shadow-[0_1px_5px_3px_#b1b9d8]
+        bg-[--color-white-2] overflow-hidden cursor-pointer
+      "
+      onClick={onClickRedirect}
+    >
+      {renderAvailabilityTag}
+      <Image className="
+          w-full aspect-square p-[16px]
+          object-contain object-center
+        "
+        src={productImage}
+        alt={productName}
+        width="300"
+        height="300"
+        priority
+      />
+      <div className=" grid grid-rows-[1fr] auto-rows-auto gap-y-[16px] p-[16px]">
+        <h3 className="
+          h-[46px] text-[20px] font-semibold line-clamp-2
+          transition-colors duration-400 ease-linear
+          group-hover:text-[--color-marine-blue]
+        ">
+          {productName}
+        </h3>
+        <p className="font-extrabold">{formatedPrice}</p>
+        <ButtonOutlined className="w-full" onClick={handleAddToCart}>
           Add to cart
-        </MainButton>
-      </InfoWrapper>
-    </StyledProductCard>
+        </ButtonOutlined>
+        <Button className="w-full
+          group-hover:bg-[--color-marine-blue] 
+        ">
+          View Detail
+        </Button>
+      </div>
+    </div>
   );
 }
-
-export default memo(ProductCard);

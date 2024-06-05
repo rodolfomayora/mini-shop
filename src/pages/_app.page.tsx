@@ -1,13 +1,10 @@
 import { AppProps } from 'next/app';
-import {
-  ProductProvider,
-  CartProvider,
-  RecordProvider,
-  ThemeContextProvider
-} from '../context';
-// import { SplashScreen } from '../components';
+import { ProductProvider } from '#context/product';
+import { CartProvider } from '#context/cart';
+import { RecordProvider } from '#context/record';
+// import { ThemeContextProvider } from '#context/theme';
 import { ErrorBoundary } from '#errors/ErrorBoundary';
-import GlobalStyles from '../styles/GlobalStyles';
+import '../styles/global.css';
 
 // import('../../__mocks__').then(({ serverMSW }) => {
 //   serverMSW();
@@ -19,11 +16,9 @@ const App = ({ Component, pageProps }: AppProps) => (
     <ProductProvider>
       <CartProvider>
         <RecordProvider>
-          <ThemeContextProvider>
-            <GlobalStyles />
-            {/* {process.env.NODE_ENV === 'production' && <SplashScreen />} */}
+          {/* <ThemeContextProvider> */}
             <Component {...pageProps} />
-          </ThemeContextProvider>
+          {/* </ThemeContextProvider> */}
         </RecordProvider>
       </CartProvider>
     </ProductProvider>

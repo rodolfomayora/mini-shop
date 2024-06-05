@@ -1,30 +1,31 @@
-import React, { FC } from 'react';
-
+import type { ReactNode } from 'react';
 import Head from 'next/head';
+import { Container } from '#components/Container';
+import { Header } from '#components/Header';
 
-import Container from '../Container';
-import Header from '../Header';
-import { MainContent } from './styles';
-
-type LayoutProps = {
-  pageTitle: string
+type Props = {
+  children: ReactNode,
+  pageTitle: string,
 }
 
-const Layout: FC<LayoutProps> = ({ children, pageTitle }) => (
-  <>
-    <Head>
-      <title>{`${pageTitle} | Mini Shop`}</title>
-      <meta charSet='UTF-8' />
-      <meta name="theme-color" content="#273c75" />
-    </Head>
+/* dark theme backup: main
+background-color: ${colors.dark.black};
+*/
 
-    <Header />
-    <MainContent>
-      <Container>
-        {children}
-      </Container>  
-    </MainContent>
-  </>
-)
-
-export default Layout;
+export function Layout ({ children, pageTitle }: Props) {
+  return (
+    <>
+      <Head> 
+        <title>{`${pageTitle} | Mini Shop`}</title>
+        <meta charSet='UTF-8' />
+        <meta name="theme-color" content="#273c75" />
+      </Head>
+      <Header />
+      <main className="py-[40px] md:py-[60px]">
+        <Container>
+          {children}
+        </Container>  
+      </main>
+    </>
+  );
+}
