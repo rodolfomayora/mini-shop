@@ -11,7 +11,7 @@ import { CartButton } from '#components/CartButton';
 
 export function Header () {
   return  (
-    <header className="sticky top-0 z-10 bg-[var(--color-marine-blue)]">
+    <header className="sticky top-0 z-10 bg-[--color-marine-blue]">
       <Container>
         <nav className="
           flex justify-between items-center
@@ -20,7 +20,7 @@ export function Header () {
           <Link href="/">
             <h2 className="cursor-pointer
               text-[18px] uppercase
-              text-[var(--color-white)]
+              text-[--color-white]
             ">
               SHOP
             </h2>
@@ -29,7 +29,7 @@ export function Header () {
           <div className="flex items-center gap-x-[16px] md:gap-x-[30px]">
             <Link className="
                 text-[18px] capitalize
-                text-[var(--color-white)]
+                text-[--color-white]
                 cursor-pointer
               "
               href="/"
@@ -38,7 +38,7 @@ export function Header () {
             </Link>
             <Link className="
                 text-[18px] capitalize
-                text-[var(--color-white)]
+                text-[--color-white]
                 cursor-pointer
               "
               href="/record"

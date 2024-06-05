@@ -20,7 +20,7 @@ function Record () {
       <li key={listItemId}>
         <div className="
           grid gap-y-[8px]
-          bg-[var(--color-white-2)] p-[20px] rounded-[6px]
+          bg-[--color-white-2] p-[20px] rounded-[6px]
           shadow-[0_0_5px_0px_#b1b9d8]
         ">
           <p className="font-semibold text-[20px]">

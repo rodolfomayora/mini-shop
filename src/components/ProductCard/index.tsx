@@ -65,8 +65,8 @@ export function ProductCard ({
     ? (
       <div className="
         absolute z-10 top-0 left-0 w-full
-        leading-[40px] text-center font-semibold text-[var(--color-white)]
-        bg-[var(--color-red)]
+        leading-[40px] text-center font-semibold text-[--color-white]
+        bg-[--color-red]
         opacity-90
       ">
         Not Available
@@ -76,7 +76,7 @@ export function ProductCard ({
   return (
     <div className="group
         relative rounded-[6px] shadow-[0_1px_5px_3px_#b1b9d8]
-        bg-[var(--color-white-2)] overflow-hidden cursor-pointer
+        bg-[--color-white-2] overflow-hidden cursor-pointer
       "
       onClick={onClickRedirect}
     >
@@ -95,7 +95,7 @@ export function ProductCard ({
         <h3 className="
           h-[46px] text-[20px] font-semibold line-clamp-2
           transition-colors duration-400 ease-linear
-          group-hover:text-[var(--color-marine-blue)]
+          group-hover:text-[--color-marine-blue]
         ">
           {productName}
         </h3>
@@ -104,7 +104,7 @@ export function ProductCard ({
           Add to cart
         </ButtonOutlined>
         <Button className="w-full
-          group-hover:bg-[var(--color-marine-blue)] 
+          group-hover:bg-[--color-marine-blue] 
         ">
           View Detail
         </Button>

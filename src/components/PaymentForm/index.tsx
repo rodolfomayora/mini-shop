@@ -55,13 +55,13 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
             <span className="block leading-[28px] cursor-pointer">Email:</span>
             <input className="inline-block
                 w-full leading-[32px] px-[12px]
-                text-[var(--color-black-1)] rounded-[6px]
-                border-solid border-[1px] border-[var(--color-black-1)]
-                bg-[var(--color-white-2)] overflow-hidden
+                text-[--color-black-1] rounded-[6px]
+                border-solid border-[1px] border-[--color-black-1]
+                bg-[--color-white-2] overflow-hidden
                 outline-none
 
                 disabled:cursor-not-allowed
-                disabled:bg-[var(--color-gray)]
+                disabled:bg-[--color-gray]
                 disabled:opacity-50
               "
               name="email"
@@ -76,7 +76,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
           
           {touched.email
           && errors.email
-          && <p className="mt-[6px] text-[12px] text-[var(--color-red)]">{`${errors.email}`}</p>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.email}`}</p>}
         </div>
 
         <div>
@@ -84,13 +84,13 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
             <span className="block leading-[28px] cursor-pointer">Name:</span>
             <input className="inline-block
                 w-full leading-[32px] px-[12px]
-                text-[var(--color-black-1)] rounded-[6px]
-                border-solid border-[1px] border-[var(--color-black-1)]
-                bg-[var(--color-white-2)] overflow-hidden
+                text-[--color-black-1] rounded-[6px]
+                border-solid border-[1px] border-[--color-black-1]
+                bg-[--color-white-2] overflow-hidden
                 outline-none
 
                 disabled:cursor-not-allowed
-                disabled:bg-[var(--color-gray)]
+                disabled:bg-[--color-gray]
                 disabled:opacity-50
               "
               name="name"
@@ -107,7 +107,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
           
           {touched.name
           && errors.name
-          && <p className="mt-[6px] text-[12px] text-[var(--color-red)]">{`${errors.name}`}</p>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.name}`}</p>}
         </div>
 
         <div>
@@ -115,13 +115,13 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
             <span className="block leading-[28px] cursor-pointer">Lastname:</span>
             <input className="inline-block
                 w-full leading-[32px] px-[12px]
-                text-[var(--color-black-1)] rounded-[6px]
-                border-solid border-[1px] border-[var(--color-black-1)]
-                bg-[var(--color-white-2)] overflow-hidden
+                text-[--color-black-1] rounded-[6px]
+                border-solid border-[1px] border-[--color-black-1]
+                bg-[--color-white-2] overflow-hidden
                 outline-none
 
                 disabled:cursor-not-allowed
-                disabled:bg-[var(--color-gray)]
+                disabled:bg-[--color-gray]
                 disabled:opacity-50
               "
               name="lastname"
@@ -137,7 +137,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
           </label>
           {touched.lastname
           && errors.lastname
-          && <p className="mt-[6px] text-[12px] text-[var(--color-red)]">{`${errors.lastname}`}</p>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.lastname}`}</p>}
         </div>
 
         <div>
@@ -145,13 +145,13 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
             <span className="block leading-[28px] cursor-pointer">Address:</span>
             <textarea className="inline-block
                 min-w-full max-w-full leading-[32px] px-[12px]
-                text-[var(--color-black-1)] rounded-[6px]
-                border-solid border-[1px] border-[var(--color-black-1)]
-                bg-[var(--color-white-2)] overflow-hidden
+                text-[--color-black-1] rounded-[6px]
+                border-solid border-[1px] border-[--color-black-1]
+                bg-[--color-white-2] overflow-hidden
                 outline-none
 
                 disabled:cursor-not-allowed
-                disabled:bg-[var(--color-gray)]
+                disabled:bg-[--color-gray]
                 disabled:opacity-50
               "
               name="address"
@@ -166,7 +166,7 @@ export function PaymentForm ({ onClickSubmitAction }: Props) {
           </label>
           {touched.address
           && errors.address
-          && <p className="mt-[6px] text-[12px] text-[var(--color-red)]">{`${errors.address}`}</p>}
+          && <p className="mt-[6px] text-[12px] text-[--color-red]">{`${errors.address}`}</p>}
         </div>
 
         <div>

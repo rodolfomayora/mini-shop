@@ -8,14 +8,14 @@ type Props = ComponentProps<typeof Button> & {
 
 export function ButtonOutlined ({ children, className = '', ...props }: Props) {
   const classes = twMerge(`
-    text-[var(--color-dark-blue-3)] font-bold
-    border-[var(--color-dark-blue-3)]
+    text-[--color-dark-blue-3] font-bold
+    border-[--color-dark-blue-3]
     bg-transparent
     transition-colors
-    hover:text-[var(--color-white)]
-    hover:bg-[var(--color-black-3)]
-    hover:border-[var(--color-black-3)]
-    disabled:bg-[var(--color-gray)]
+    hover:text-[--color-white]
+    hover:bg-[--color-black-3]
+    hover:border-[--color-black-3]
+    disabled:bg-[--color-gray]
     ${className}
   `);
 

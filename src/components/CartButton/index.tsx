@@ -38,8 +38,8 @@ export function CartButton () {
         absolute top-[100%] start-0 z-1
         translate-x-[-45%] translate-y-[-54%]
         grid place-items-center
-        text-[var(--color-white)] text-[12px] 
-        rounded-full bg-[var(--color-black-3)]
+        text-[--color-white] text-[12px] 
+        rounded-full bg-[--color-black-3]
         min-w-[20px] aspect-square pb-[1px]
       ">
         {quantityToRender}

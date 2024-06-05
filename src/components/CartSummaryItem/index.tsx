@@ -23,7 +23,7 @@ export function CartSummaryItem ({ cartItemId }: Props) {
   return (
     <article className="
       flex gap-x-[10px] p-[10px]
-      bg-[var(--color-white-2)] rounded-[6px]
+      bg-[--color-white-2] rounded-[6px]
       shadow-[0_0_4px_-1px_#b1b9d8]
     ">
       <Image className="

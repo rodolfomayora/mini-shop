@@ -16,7 +16,7 @@ function Checkout () {
   
   return (
     <Layout pageTitle="Checkout">
-      <h1 className="mt-0 mb-[40px] text-left text-[36px] text-[var(--color-black-2)]">
+      <h1 className="mt-0 mb-[40px] text-left text-[36px] text-[--color-black-2]">
         Check Out
       </h1>
       <div className="
@@ -41,7 +41,7 @@ function Checkout () {
         <section className="
           grow
           grid content-start gap-y-[20px]
-          pt-[40px] border-solid border-t-[1px] border-[var(--color-black-3)]
+          pt-[40px] border-solid border-t-[1px] border-[--color-black-3]
           md:pt-0 md:border-none
         ">
           <h2 className="text-[22px] font-semibold">Payment Form</h2>

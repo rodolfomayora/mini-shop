@@ -43,7 +43,7 @@ function Cart () {
         <p className="
           py-[10px] px-[10px] rounded-[6px]
           text-[18px] font-semibold
-          bg-[var(--color-white-2)] shadow-[0_1px_5px_3px_#b1b9d8]
+          bg-[--color-white-2] shadow-[0_1px_5px_3px_#b1b9d8]
         ">
           {`Total Price: $${subTotal}`}
         </p>

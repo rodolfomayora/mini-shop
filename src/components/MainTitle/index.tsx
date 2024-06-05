@@ -7,7 +7,7 @@ type Props = ComponentProps<'h1'> & {
 
 export function MainTitle ({ children, className = '', ...props }: Props) {
   const classes = twMerge(`
-    text-[36px] text-[var(--color-black-2)]
+    text-[36px] text-[--color-black-2]
     mt-0 mb-[40px]
     ${className}
   `);

@@ -34,7 +34,7 @@ export function Product () {
         <Image className="
             w-full aspect-square p-[16px]
             object-contain object-center
-            bg-[var(--color-white-2)] rounded-[6px]
+            bg-[--color-white-2] rounded-[6px]
             shadow-[0_0_5px_0px_#b1b9d8]
           "
           src={product?.image ?? ''}

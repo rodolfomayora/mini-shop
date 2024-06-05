@@ -16,10 +16,10 @@ export function ToggleThemeButton () {
 
   return <input className="
       flex justify-center w-8 h-8
-      rounded-full border-2 border-[var(--color-yellow)]
+      rounded-full border-2 border-[--color-yellow]
       cursor-pointer
       bg-[url('/images/svg/sun.svg')] bg-center bg-[length:20px]
-      bg-no-repeat bg-[var(--color-white)]
+      bg-no-repeat bg-[--color-white]
     "
     type="button"
     onClick={toggleTheme}
