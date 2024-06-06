@@ -74,7 +74,7 @@ export function ProductCard ({
     ) : null 
 
   return (
-    <div className="group
+    <article className="group
         relative rounded-[6px] shadow-[0_1px_5px_3px_#b1b9d8]
         bg-[--color-white-2] overflow-hidden cursor-pointer
       "
@@ -111,6 +111,6 @@ export function ProductCard ({
           View Detail
         </Button>
       </div>
-    </div>
+    </article>
   );
 }
