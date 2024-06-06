@@ -4,7 +4,12 @@ export default {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lato: ['var(--font-lato)'],
+        montserrat: ['var(--font-montserrat)'],
+      }
+    },
   },
   plugins: [],
 }

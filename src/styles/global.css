@@ -12,73 +12,19 @@
   @tailwind utilities;
 }
 
-@layer defaults.typography {
-  /* LATO */
-  @font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src:
-      url('/fonts/Lato/lato-v17-latin-regular.woff') format('woff'),
-      url('/fonts/Lato/lato-v17-latin-regular.ttf') format('truetype');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src:
-      url('/fonts/Lato/lato-v17-latin-700.woff') format('woff'),
-      url('/fonts/Lato/lato-v17-latin-700.ttf') format('truetype');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 900;
-    src:
-      url('/fonts/Lato/lato-v17-latin-900.woff') format('woff'),
-      url('/fonts/Lato/lato-v17-latin-900.ttf') format('truetype');
-    font-display: swap;
-  }
-
-  /* Montserrat */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    src:
-      url('/fonts/Montserrat/montserrat-v15-latin-regular.woff') format('woff'),
-      url('/fonts/Montserrat/montserrat-v15-latin-regular.ttf') format('truetype');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    src:
-      url('/fonts/Montserrat/montserrat-v15-latin-600.woff') format('woff'),
-      url('/fonts/Montserrat/montserrat-v15-latin-600.ttf') format('truetype');
-    font-display: swap;
-  }
-
-
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 800;
-    src:
-      url('/fonts/Montserrat/montserrat-v15-latin-800.woff') format('woff'),
-      url('/fonts/Montserrat/montserrat-v15-latin-800.ttf') format('truetype');
-    font-display: swap;
-  }
-}
-
 @layer defaults.variables {
   :root {
+    /* Fonts */
+    /* 
+      --font-montserrat: 'Montserrat';
+      Montserrat font variable is defined on '/src/assets/fonts/Montserrat
+
+      --font-lato: 'Lato';
+      Lato font variable is defined on '/src/assets/fonts/Lato 
+
+    */
+
+    /* Colors */
     --color-white      : #f5f6fa;
     --color-white-2    : #ffffff;
     --color-black-1    : #2f3640;
@@ -94,23 +40,14 @@
     --shadow-1: 0 1px 5px 3px #b1b9d8;
     --shadow-2: 0 1px 5px 3px #474747;
 
-    --font-montserrat: 'Montserrat';
-    --font-lato      : 'Lato';
-
+    /* Dimensions */
     --min-mobile-with: 375px;
   }
 }
 
 @layer defaults.base {
   *:focus-visible {
-    outline: solid #111111 4px;
-  }
-
-  html {
-    font-family: var(--font-lato), Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.15;
-    color: var(--color-black-2);
+    outline: solid var(--color-black-3) 4px;
   }
 
   body {
@@ -119,8 +56,16 @@
     background-color: var(--color-white)
   }
 
+  /* body { */
+  #__next > div {
+    font-family: var(--font-lato), Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.15;
+    color: var(--color-black-2);
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
     font-weight: 700;
     color: var(--color-black-2);
   }

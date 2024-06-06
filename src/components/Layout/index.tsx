@@ -21,7 +21,7 @@ export function Layout ({ children, pageTitle }: Props) {
         <meta name="theme-color" content="#273c75" />
       </Head>
       <Header />
-      <main className="py-[40px] md:py-[60px]">
+      <main className="py-[40px]">
         <Container>
           {children}
         </Container>  
