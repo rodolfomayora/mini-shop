@@ -1,0 +1,54 @@
+@layer defaults.base {
+  *:focus-visible {
+    outline: solid var(--color-black-3) 4px;
+  }
+
+  body {
+    min-height: 100svh;
+    min-width: var(--min-mobile-width);
+    background-color: var(--color-white)
+  }
+
+  #__next > div {
+    font-family: var(--font-lato), Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.15;
+    color: var(--color-black-2);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: var(--color-black-2);
+  }
+  
+  img {
+    all: revert;
+    display: inline-block;
+    max-inline-size: 100%; /* max-width: 100% */
+    block-size: auto;      /* height: auto */
+    box-sizing: border-box;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  abbr[title] { text-decoration: none; }
+
+  button, label, img, a {
+    user-select: none;
+  }
+
+  @supports (text-wrap:pretty) {
+    html {
+      text-wrap: pretty;
+    }
+  }
+
+  @supports (text-wrap:balance) {
+    h1, h2, h3, h4, h5, h6 {
+      text-wrap: balance;
+    }
+  }
+}

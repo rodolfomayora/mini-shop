@@ -1,0 +1,32 @@
+@layer defaults.variables {
+  :root {
+    /* Fonts */
+    /* 
+      --font-montserrat: 'Montserrat';
+      Montserrat font variable is defined on '/src/assets/fonts/Montserrat
+
+      --font-lato: 'Lato';
+      Lato font variable is defined on '/src/assets/fonts/Lato 
+
+    */
+
+    /* Colors */
+    --color-white      : #f5f6fa;
+    --color-white-2    : #ffffff;
+    --color-black-1    : #2f3640;
+    --color-black-2    : #353b48;
+    --color-black-3    : #111111;
+    --color-gray       : #818181;
+    --color-green      : #00ff68;
+    --color-marine-blue: #273c75;
+    --color-red        : #ff0000;
+    --color-sky-blue   : #5d83ea;
+    --color-yellow     : #ffc107;
+
+    --shadow-1: 0 1px 5px 3px #b1b9d8;
+    --shadow-2: 0 1px 5px 3px #474747;
+
+    /* Dimensions */
+    --min-mobile-with: 375px;
+  }
+}
