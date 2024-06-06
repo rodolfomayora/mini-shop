@@ -8,6 +8,7 @@ import {
 
 import type { ProductsById } from '../../models/productContext';
 import { getProducts } from '#services/fakestoreapi';
+// import products from '../../data/products.json';
 import { useThrowAsyncError } from '#errors/useThrowAsyncError';
 
 type ProductState = {
@@ -102,6 +103,20 @@ export const ProductProvider = ({ children }: Props) => {
     async function getData () {
       try {
         const producst = await getProducts();
+        // @ts-ignore
+        // const producst = products.map((product) => {
+        //   return {
+        //     id: product.id,
+        //     title: product.title,
+        //     price: product.price,
+        //     description: product.description,
+        //     category: product.category,
+        //     image: product.image,
+        //     rating: { ...product.rating },
+        //     quantity: 20,
+        //   }
+        // })
+        
         dispatch({
           type: 'ADD_PRODUCTS',
           data: producst

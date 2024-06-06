@@ -89,6 +89,8 @@ export function ProductCard ({
         alt={productName}
         width="300"
         height="300"
+        placeholder="blur"
+        blurDataURL="/images/svg/cube.svg"
         priority
       />
       <div className=" grid grid-rows-[1fr] auto-rows-auto gap-y-[16px] p-[16px]">
